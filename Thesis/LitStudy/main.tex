@@ -40,15 +40,32 @@
 omgeving weergegeven in een head-mounted display kan rondwandelen door middel
 van het vervormen van de route die deze gebruiker in een fysieke omgeving wandelt.
 
-Deze term omvat diverse technieken, ik tracht deze technieken hier in het kort
-toe te lichten door middel van eerder uitgevoerde studies.
+Het doel is, door de 1:1 relatie van fysieke beweging en virtuele beweging te
+ontkoppelen, rondwandelen in grotere tot zelfs arbitrair grote virtuele ruimtes
+mogelijk te maken.
+
+Om dit te effect te bekomen zijn er 2 brede categorie\"en van technieken, ik zal
+deze twee categorie\"en beknopt toelichten samen met enkele concrete voorbeelden.
 
 Vervolgens zal ik enkele inherente zwaktes in redirected walking toelichten.
 
 Ik zal dan besluiten met de invalshoek die ik zal nemen in deze bachelorproef.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Technieken}
+\subsection{Redirectietechnieken (RDTs)}
+RDTs zijn technieken waar er gebruik wordt gemaakt van de zwaktes van het 
+vestibulair systeem om de fysieke bewegingen van een gebruiker te ontkoppelen
+van de resulterende virtuele bewegingen.
+
+Bij deze technieken is het belangrijk om de vervormingen onmerkbaar te houden
+voor de gebruiker, maar ook om ze consistent te houden om simulatieziekte te
+vermijden.\cite{kohn01}
+
+Ik beschrijf hier kort deze technieken samen met onderzoeken die er over gevoerd
+zijn.
+
+
 \subsubsection{Rotationele vervorming}
 In een onderzoek gevoerd door Razzaque, Kohn en Whitton\cite{kohn01} werden 
 gebruikers gevraagd om een virtuele brandoefening uit te voeren.
@@ -85,11 +102,66 @@ In een ander onderzoek van Neth et. al.\cite{neth12} werd verder onderzocht wat
 de precieze relatie tussen bewegingssnelheid en maximaal acceptabele rotationele
 vervorming is.
 
-\todo[inline]{Praten over experiment 1 v. neth12}
+Uit dit onderzoek bleek dat tragere snelheden grotere vervormingen toelaten, maar
+dat deze relatie niet lineair is.
+
+Aangezien mensen over het algemeen trager wandelen in virtuele omgevingen
+\cite{mohler07}, kan men dit toepassen in redirected walking.
+
+In een tweede experiment\cite{neth12} werd onderzocht of deze bevindingen
+effectief konden gebruikt worden dynamische schalering van vervorming toe te
+passen in een rijke virtuele omgeving. Er werd hier onderzocht of er een
+significant verschil is tussen de effectiviteit van statische rotationele
+vervorming versus dynamische rotationele vervorming.
+
+Naast de technieken van Razzaque, Kohn en Whitton\cite{kohn01} om rotationele
+vervorming in te voegen met een constant, een statisch en een dynamisch component,
+werd er ook gebruik gemaakt van versterking van de effecten nabij de randen van
+de fysieke omgeving, om het verlaten van het tracking gebied te vermijden.
+
+Er werd gemeten wat de mediaanafstand was die een gebruiker kan wandelen in een
+grote virtuele omgeving voor de gebruiker moet geforceerd geherori\"enteeerd
+worden richting het centrum van de fysieke omgeving om het verlaten van het
+tracking gebied te voorkomen.
+
+Uit dit experiment is gebleken dat er een positief significant verschil is tussen
+de mediaan gewandelde afstand bij dynamische vervorming versus statische
+vervorming zonder een significante verhoging in simulatorziekte.
 
 Rotationele vervorming vormt de basis van redirected walking, gegeven een
 voldoende grote ruimte kan deze techniek toegepast worden om elke virtuele
 omgeving te doorlopen.
+
+
+\subsubsection{Snelheidsvervorming}
+Naast rotationele vervorming is het ook mogelijk om de lineaire snelheid van een
+gebruiker te vervormen daar onderzoek heeft aangetoond dat gebruikers in virtuele
+omgevingen afstand\cite{loomis03}, snelheid\cite{banton05} en afgelegde afstand
+\cite{frenz07} onderschatten.
+
+\todo[inline]{Praten over snelheidsvervorming (20 in neth12)}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Reori\"entatietechnieken (ROTs)}
+ROTs zijn technieken om te voorkomen dat de gebruiker het fysiek trackbare gebied
+verlaat.
+
+In tegenstelling tot RDTs zijn deze technieken niet noodzakelijk onmerkbaar, ik
+beschrijf er hier enkele.
+
+
+\subsubsection{Verbale commandos}
+\todo[inline]{Verbale commandos zoals in kohn01 beschrijven}
+
+
+\subsubsection{Visuele commandos}
+\todo[inline]{Visuele commandos zoals in neth12 beschrijven}
+
+
+\subsubsection{Afleiders}
+\todo[inline]{Avatars etc...}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Inherente zwaktes}
@@ -106,12 +178,13 @@ hebben in de virtuele omgeving zonder immersie te breken.
 Desondanks deze behoorlijke beperkingen heeft redirected walking toch veel
 potenti\"ele toepassingen zoals virtuele rondleidingen.
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Verder onderzoek}
 \todo[inline]{Mijn BPROEF bespreken.}
 
+
 \newpage
 \bibliographystyle{babplain-fl}
 \bibliography{refs}
-  
 \end{document}
