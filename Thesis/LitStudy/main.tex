@@ -74,7 +74,7 @@ zijn.
 
 
 \subsubsection{Rotationele vervorming}
-In een onderzoek gevoerd door Razzaque, Kohn en Whitton\cite{kohn01} werden 
+In een onderzoek gevoerd door Razzaque, Kohn en Whitton \cite{kohn01} werden 
 gebruikers gevraagd om een virtuele brandoefening uit te voeren.
 
 In de opstelling voor dit onderzoek waren er in het fysieke labo twee knoppen
@@ -98,7 +98,18 @@ Deze gegevens werden dan gebruikt om de gebruiker in de richting van de volgende
 knop te sturen zodat de gebruiker voor een fysieke knop stond als dit ook het
 geval was in de virtuele omgeving.
 
-In een ander onderzoek van Neth et. al.\cite{neth12} werd verder onderzocht wat
+Dit onderzoek vereist een voorberekend pad en een minimale deviatie van dit pad 
+door de gebruiker voor een optimale ervaring. In \cite{engel08} wordt een 
+techniek voorgesteld om deze rotationele vervorming dynamisch te bepalen.
+
+Dit werd gedaan door het dynamische-rotatie probleem te reduceren tot een 
+optimisatie probleem, welke in de AI gemeenschap reeds bekend zijn.
+
+Dit algoritme maakte het mogelijk om optimale rotationele vervormingen te 
+berekenen maar vereist in ieder geval een gedeeltelijke kennis over het te volgen
+virtuele pad.
+
+In een ander onderzoek van Neth et. al. \cite{neth12} werd verder onderzocht wat
 de precieze relatie tussen bewegingssnelheid en maximaal acceptabele rotationele
 vervorming is.
 
@@ -108,13 +119,13 @@ dat deze relatie niet lineair is.
 Aangezien mensen over het algemeen trager wandelen in virtuele omgevingen
 \cite{mohler07}, kan men dit toepassen in redirected walking.
 
-In een tweede experiment\cite{neth12} werd onderzocht of deze bevindingen
+In een tweede experiment \cite{neth12} werd onderzocht of deze bevindingen
 effectief konden gebruikt worden dynamische schalering van vervorming toe te
 passen in een rijke virtuele omgeving. Er werd hier onderzocht of er een
 significant verschil is tussen de effectiviteit van statische rotationele
 vervorming versus dynamische rotationele vervorming.
 
-Naast de technieken van Razzaque, Kohn en Whitton\cite{kohn01} om rotationele
+Naast de technieken van Razzaque, Kohn en Whitton \cite{kohn01} om rotationele
 vervorming in te voegen met een constant, een statisch en een dynamisch component,
 werd er ook gebruik gemaakt van versterking van de effecten nabij de randen van
 de fysieke omgeving, om het verlaten van het tracking gebied te vermijden.
@@ -128,11 +139,15 @@ Uit dit experiment is gebleken dat er een positief significant verschil is tusse
 de mediaan gewandelde afstand bij dynamische vervorming versus statische
 vervorming zonder een significante verhoging in simulatorziekte.
 
+Uit al deze onderzoeken blijkt dat er een trade-off is tussen een virtuele 
+omgeving met een ongekend pad\cite{neth12} versus een betere immersie wegens 
+minder onderbrekingen\cite{engel08,kohn01}. 
+
 Alle vorige studies behandelden rotationele vervorming in beweging, dus over 
 curves. Het is echter ook mogelijk om rotationele vervorming in stilstand te
 hebben.
 
-In\cite{steinicke09} werd bepaald dat in dit specifieke geval compressies tot
+In \cite{steinicke09} werd bepaald dat in dit specifieke geval compressies tot
 77\% acceptabel zijn voor de gebruiker het merkt.
 
 Rotationele vervorming vormt de basis van redirected walking, gegeven een
@@ -143,10 +158,10 @@ omgeving te doorlopen.
 \subsubsection{Translationele vervorming}
 Naast rotationele vervorming is het ook mogelijk om de lineaire snelheid van een
 gebruiker te vervormen daar onderzoek heeft aangetoond dat gebruikers in virtuele
-omgevingen afstand\cite{loomis03}, snelheid\cite{banton05} en afgelegde afstand
+omgevingen afstand \cite{loomis03}, snelheid \cite{banton05} en afgelegde afstand
 \cite{frenz07} onderschatten.
 
-In\cite{steinicke09} werd er een experiment uitgevoerd om onder andere te bepalen
+In \cite{steinicke09} werd er een experiment uitgevoerd om onder andere te bepalen
 wat de acceptabele translationele vervorming is.
 
 Er werd bepaald dat de vervorming merkbaar is bij een versnelling tussen 20\% en
@@ -171,17 +186,17 @@ beschrijf er hier enkele.
 
 
 \subsubsection{Verbale commandos}
-In het onderzoek van Razzaque, Kohn en Whitton\cite{kohn01} werd, indien de
+In het onderzoek van Razzaque, Kohn en Whitton \cite{kohn01} werd, indien de
 gebruiker dreigde het tracking gebied te verlaten, de gebruiker met verbale
 commando's gevraagd stil te staan en heen en weer te kijken om de gebruiker in
 de fysieke omgeving terug in de juiste richting te laten kijken.
 
-Er werd elders\cite{peck09} echter bevonden dat verbale commando's niet de beste 
+Er werd elders \cite{peck09} echter bevonden dat verbale commando's niet de beste 
 optie zijn voor redirectietechnieken.
 
 
 \subsubsection{Visuele commandos}
-In het onderzoek van Neth et. al.\cite{neth12} werd onder andere gebruik gemaakt
+In het onderzoek van Neth et. al. \cite{neth12} werd onder andere gebruik gemaakt
 van een stopteken. Als dit werd getoond werd de hele virtuele wereld stil gelegd.
 Er werd op voorhand aan de gebruiker gevraagd rond te draaien tot het stopteken
 verdwijnt indien het getoond werd.
