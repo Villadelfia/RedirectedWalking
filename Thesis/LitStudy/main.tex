@@ -36,9 +36,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Literatuurstudie}
 \subsection{Inleiding}
-\emph{Redirected walking} is een techniek waarbij een gebruiker in een virtuele
+\emph{Redirected walking} is een techniek waarbij een proefpersoon in een virtuele
 omgeving weergegeven in een head-mounted display kan rondwandelen door middel
-van het vervormen van de route die deze gebruiker in een fysieke omgeving wandelt.
+van het vervormen van de route die deze proefpersoon in een fysieke omgeving 
+wandelt.
 
 Het doel is, door de 1:1 relatie van fysieke beweging en virtuele beweging te
 ontkoppelen, rondwandelen in grotere tot zelfs arbitrair grote virtuele ruimtes
@@ -62,11 +63,11 @@ Ik zal dan besluiten met de invalshoek die ik zal nemen in deze bachelorproef.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Redirectietechnieken (RDTs)}
 RDTs zijn technieken waar er gebruik wordt gemaakt van de zwaktes van het 
-vestibulair systeem om de fysieke bewegingen van een gebruiker te ontkoppelen
+vestibulair systeem om de fysieke bewegingen van een proefpersoon te ontkoppelen
 van de resulterende virtuele bewegingen.
 
 Bij deze technieken is het belangrijk om de vervormingen onmerkbaar te houden
-voor de gebruiker, maar ook om ze consistent te houden om simulatieziekte te
+voor de proefpersoon, maar ook om ze consistent te houden om simulatieziekte te
 vermijden.\cite{kohn01}
 
 Ik beschrijf hier kort deze technieken samen met onderzoeken die er over gevoerd
@@ -75,7 +76,7 @@ zijn.
 
 \subsubsection{Rotationele vervorming}
 In een onderzoek gevoerd door Razzaque, Kohn en Whitton \cite{kohn01} werden 
-gebruikers gevraagd om een virtuele brandoefening uit te voeren.
+proefpersonen gevraagd om een virtuele brandoefening uit te voeren.
 
 In de opstelling voor dit onderzoek waren er in het fysieke labo twee knoppen
 geplaatst op dezelfde afstand als in de virtuele omgeving. In de virtuele
@@ -85,21 +86,22 @@ In dit onderzoek heeft men ondervonden dat er 3 manieren zijn om rotationele
 vervorming in te voegen:
 
 \begin{enumerate}
-    \item Als de gebruiker stil staat is het mogelijk om een kleine hoeveelheid
-        constante rotatie in te voegen, de gebruiker zal dan automatisch
-        meedraaien.
-    \item Indien de gebruiker zelf ronddraait kan deze rotatie overdreven worden.
+    \item Als de proefpersoon stil staat is het mogelijk om een kleine 
+        hoeveelheid constante rotatie in te voegen, de proefpersoon zal dan 
+        automatisch meedraaien.
+    \item Indien de proefpersoon zelf ronddraait kan deze rotatie overdreven 
+        worden.
     \item Ten laatste is het mogelijk om het pad in de virtuele omgeving een
         bepaalde hoeveelheid te buigen die proportioneel is met de lineaire
-        snelheid van de gebruiker in de fysieke omgeving.
+        snelheid van de proefpersoon in de fysieke omgeving.
 \end{enumerate}
 
-Deze gegevens werden dan gebruikt om de gebruiker in de richting van de volgende
-knop te sturen zodat de gebruiker voor een fysieke knop stond als dit ook het
-geval was in de virtuele omgeving.
+Deze gegevens werden dan gebruikt om de proefpersoon in de richting van de 
+volgende knop te sturen zodat de proefpersoon voor een fysieke knop stond als dit 
+ook het geval was in de virtuele omgeving.
 
 Dit onderzoek vereist een voorberekend pad en een minimale deviatie van dit pad 
-door de gebruiker voor een optimale ervaring. In \cite{engel08} wordt een 
+door de proefpersoon voor een optimale ervaring. In \cite{engel08} wordt een 
 techniek voorgesteld om deze rotationele vervorming dynamisch te bepalen.
 
 Dit werd gedaan door het dynamische-rotatie probleem te reduceren tot een 
@@ -126,14 +128,15 @@ significant verschil is tussen de effectiviteit van statische rotationele
 vervorming versus dynamische rotationele vervorming.
 
 Naast de technieken van Razzaque, Kohn en Whitton \cite{kohn01} om rotationele
-vervorming in te voegen met een constant, een statisch en een dynamisch component,
-werd er ook gebruik gemaakt van versterking van de effecten nabij de randen van
-de fysieke omgeving, om het verlaten van het tracking gebied te vermijden.
+vervorming in te voegen met een constant, een statisch en een dynamisch 
+component, werd er ook gebruik gemaakt van versterking van de effecten nabij de 
+randen van de fysieke omgeving, om het verlaten van het tracking gebied te 
+vermijden.
 
-Er werd gemeten wat de mediaanafstand was die een gebruiker kan wandelen in een
-grote virtuele omgeving voor de gebruiker moet geforceerd geherori\"enteeerd
-worden richting het centrum van de fysieke omgeving om het verlaten van het
-tracking gebied te voorkomen.
+Er werd gemeten wat de mediaanafstand is die een proefpersoon kan wandelen in 
+een grote virtuele omgeving voor de proefpersoon moet geforceerd 
+geherori\"enteeerd worden richting het centrum van de fysieke omgeving om het 
+verlaten van het tracking gebied te voorkomen.
 
 Uit dit experiment is gebleken dat er een positief significant verschil is tussen
 de mediaan gewandelde afstand bij dynamische vervorming versus statische
@@ -148,7 +151,7 @@ curves. Het is echter ook mogelijk om rotationele vervorming in stilstand te
 hebben.
 
 In \cite{steinicke09} werd bepaald dat in dit specifieke geval compressies tot
-77\% acceptabel zijn voor de gebruiker het merkt.
+77\% acceptabel zijn voor de proefpersoon het merkt.
 
 Rotationele vervorming vormt de basis van redirected walking, gegeven een
 voldoende grote ruimte kan deze techniek toegepast worden om elke virtuele
@@ -157,12 +160,12 @@ omgeving te doorlopen.
 
 \subsubsection{Translationele vervorming}
 Naast rotationele vervorming is het ook mogelijk om de lineaire snelheid van een
-gebruiker te vervormen daar onderzoek heeft aangetoond dat gebruikers in virtuele
-omgevingen afstand \cite{loomis03}, snelheid \cite{banton05} en afgelegde afstand
-\cite{frenz07} onderschatten.
+proefpersoon te vervormen daar onderzoek heeft aangetoond dat proefpersonen in 
+virtuele omgevingen afstand \cite{loomis03}, snelheid \cite{banton05} en 
+afgelegde afstand \cite{frenz07} onderschatten.
 
-In \cite{steinicke09} werd er een experiment uitgevoerd om onder andere te bepalen
-wat de acceptabele translationele vervorming is.
+In \cite{steinicke09} werd er een experiment uitgevoerd om onder andere te 
+bepalen wat de acceptabele translationele vervorming is.
 
 Er werd bepaald dat de vervorming merkbaar is bij een versnelling tussen 20\% en
 60\% met een ideale waarde van ongeveer 20\%.
@@ -173,13 +176,21 @@ ruimte tot een minimum te houden.
 
 
 \subsubsection{Veranderingsblindheid}
-\todo[inline]{Het experiment met de deur die verplaatst.}
+Een alternatieve methode, zonder ontkoppeling van de 1:1 relatie tussen fysieke 
+en virtuele locatie is het gebruik maken van veranderingsblindheid.
+
+In \cite{suma11} werd er getest of veranderingen in de virtuele voor de
+proefpersonen merkbaar waren. In een virtuele omgeving werd de locatie van de
+deur in een kamer veranderd zodra de proefpersoon weg keek.
+
+Uit dit experiment is gebleken dat, in zulke omstandigheden, veranderingen in de
+virtuele omgeving voor zowel ervaren als na\"ieve proefpersonen onmerkbaar zijn.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Reori\"entatietechnieken (ROTs)}
-ROTs zijn technieken om te voorkomen dat de gebruiker het fysiek trackbare gebied
-verlaat.
+ROTs zijn technieken om te voorkomen dat de proefpersoon het fysiek trackbare 
+gebied verlaat.
 
 In tegenstelling tot RDTs zijn deze technieken niet noodzakelijk onmerkbaar, ik
 beschrijf er hier enkele.
@@ -187,19 +198,20 @@ beschrijf er hier enkele.
 
 \subsubsection{Verbale commandos}
 In het onderzoek van Razzaque, Kohn en Whitton \cite{kohn01} werd, indien de
-gebruiker dreigde het tracking gebied te verlaten, de gebruiker met verbale
-commando's gevraagd stil te staan en heen en weer te kijken om de gebruiker in
+proefpersoon dreigde het tracking gebied te verlaten, de proefpersoon met verbale
+commando's gevraagd stil te staan en heen en weer te kijken om de proefpersoon in
 de fysieke omgeving terug in de juiste richting te laten kijken.
 
-Er werd elders \cite{peck09} echter bevonden dat verbale commando's niet de beste 
-optie zijn voor redirectietechnieken.
+Er werd in een andere studie \cite{peck09} echter bevonden dat verbale commando's 
+niet de beste optie zijn voor redirectietechnieken.
+\todo[inline]{Zin herschrijven.}
 
 
 \subsubsection{Visuele commandos}
 In het onderzoek van Neth et. al. \cite{neth12} werd onder andere gebruik gemaakt
 van een stopteken. Als dit werd getoond werd de hele virtuele wereld stil gelegd.
-Er werd op voorhand aan de gebruiker gevraagd rond te draaien tot het stopteken
-verdwijnt indien het getoond werd.
+Er werd op voorhand aan de proefpersoon gevraagd rond te draaien tot het 
+stopteken verdwijnt indien het getoond werd.
 
 Hoewel dit een zeer intrusieve methode is, is ze zeer effectief om het verlaten
 van het tracking gebied te voorkomen.
