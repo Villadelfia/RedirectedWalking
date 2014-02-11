@@ -2,6 +2,7 @@
 \usepackage[dutch]{babel}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{siunitx}
 \usepackage{parskip}
@@ -62,20 +63,19 @@ Ik zal dan besluiten met de invalshoek die ik zal nemen in deze bachelorproef.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Redirectietechnieken (RDTs)}
-RDTs zijn technieken waar er gebruik wordt gemaakt van de zwaktes van het 
-vestibulair systeem om de fysieke bewegingen van een proefpersoon te ontkoppelen
-van de resulterende virtuele bewegingen.
+RDTs zijn technieken waar de fysieke bewegingen van een proefpersoon ontkoppeld
+worden van de resulterende virtuele bewegingen.
 
 Bij deze technieken is het belangrijk om de vervormingen onmerkbaar te houden
-voor de proefpersoon, maar ook om ze consistent te houden om simulatieziekte te
-vermijden.\cite{kohn01}
+voor de proefpersoon\cite{kohn01}, maar ook om ze consistent te houden om 
+simulatieziekte te vermijden\cite{kolasinski95}.
 
-Ik beschrijf hier kort deze technieken samen met onderzoeken die er over gevoerd
-zijn.
+Ik beschrijf hier kort enkele van deze technieken samen met onderzoeken die er 
+over gevoerd zijn.
 
 
 \subsubsection{Rotationele vervorming}
-In een onderzoek gevoerd door Razzaque, Kohn en Whitton \cite{kohn01} werden 
+In een onderzoek gevoerd door Razzaque et. al., 2001 \cite{kohn01} werden 
 proefpersonen gevraagd om een virtuele brandoefening uit te voeren.
 
 In de opstelling voor dit onderzoek waren er in het fysieke labo twee knoppen
@@ -101,8 +101,9 @@ volgende knop te sturen zodat de proefpersoon voor een fysieke knop stond als di
 ook het geval was in de virtuele omgeving.
 
 Dit onderzoek vereist een voorberekend pad en een minimale deviatie van dit pad 
-door de proefpersoon voor een optimale ervaring. In \cite{engel08} wordt een 
-techniek voorgesteld om deze rotationele vervorming dynamisch te bepalen.
+door de proefpersoon voor een optimale ervaring. In Engel et. al., 2008 
+\cite{engel08} wordt een techniek voorgesteld om deze rotationele vervorming 
+dynamisch te bepalen.
 
 Dit werd gedaan door het dynamische-rotatie probleem te reduceren tot een 
 optimisatie probleem, welke in de AI gemeenschap reeds bekend zijn.
@@ -111,9 +112,9 @@ Dit algoritme maakte het mogelijk om optimale rotationele vervormingen te
 berekenen maar vereist in ieder geval een gedeeltelijke kennis over het te volgen
 virtuele pad.
 
-In een ander onderzoek van Neth et. al. \cite{neth12} werd verder onderzocht wat
-de precieze relatie tussen bewegingssnelheid en maximaal acceptabele rotationele
-vervorming is.
+In een ander onderzoek in Neth et. al., 2012 \cite{neth12} werd verder 
+onderzocht wat de precieze relatie tussen bewegingssnelheid en maximaal 
+acceptabele rotationele vervorming is.
 
 Uit dit onderzoek bleek dat tragere snelheden grotere vervormingen toelaten, maar
 dat deze relatie niet lineair is.
@@ -127,7 +128,7 @@ passen in een rijke virtuele omgeving. Er werd hier onderzocht of er een
 significant verschil is tussen de effectiviteit van statische rotationele
 vervorming versus dynamische rotationele vervorming.
 
-Naast de technieken van Razzaque, Kohn en Whitton \cite{kohn01} om rotationele
+Naast de technieken van Razzaque et. al., 2001 \cite{kohn01} om rotationele
 vervorming in te voegen met een constant, een statisch en een dynamisch 
 component, werd er ook gebruik gemaakt van versterking van de effecten nabij de 
 randen van de fysieke omgeving, om het verlaten van het tracking gebied te 
@@ -164,8 +165,9 @@ proefpersoon te vervormen daar onderzoek heeft aangetoond dat proefpersonen in
 virtuele omgevingen afstand \cite{loomis03}, snelheid \cite{banton05} en 
 afgelegde afstand \cite{frenz07} onderschatten.
 
-In \cite{steinicke09} werd er een experiment uitgevoerd om onder andere te 
-bepalen wat de acceptabele translationele vervorming is.
+In Steinicke et. al., 2009 \cite{steinicke09} werd er een experiment uitgevoerd 
+om onder andere te bepalen wat de maximaal acceptabele translationele vervorming 
+is voor een gegeven snelheid.
 
 Er werd bepaald dat de vervorming merkbaar is bij een versnelling tussen 20\% en
 60\% met een ideale waarde van ongeveer 20\%.
@@ -179,9 +181,10 @@ ruimte tot een minimum te houden.
 Een alternatieve methode, zonder ontkoppeling van de 1:1 relatie tussen fysieke 
 en virtuele locatie is het gebruik maken van veranderingsblindheid.
 
-In \cite{suma11} werd er getest of veranderingen in de virtuele voor de
-proefpersonen merkbaar waren. In een virtuele omgeving werd de locatie van de
-deur in een kamer veranderd zodra de proefpersoon weg keek.
+In Suma et. al., 2011 \cite{suma11} werd er getest of veranderingen in de 
+virtuele omgeving voor de proefpersonen merkbaar waren. In een virtuele omgeving 
+werd de locatie van de deur in een kamer veranderd zodra de proefpersoon weg 
+keek.
 
 Uit dit experiment is gebleken dat, in zulke omstandigheden, veranderingen in de
 virtuele omgeving voor zowel ervaren als na\"ieve proefpersonen onmerkbaar zijn.
@@ -197,20 +200,20 @@ beschrijf er hier enkele.
 
 
 \subsubsection{Verbale commandos}
-In het onderzoek van Razzaque, Kohn en Whitton \cite{kohn01} werd, indien de
+In het onderzoek van Razzaque et. al., 2001 \cite{kohn01} werd, indien de
 proefpersoon dreigde het tracking gebied te verlaten, de proefpersoon met verbale
 commando's gevraagd stil te staan en heen en weer te kijken om de proefpersoon in
 de fysieke omgeving terug in de juiste richting te laten kijken.
 
-Er werd in een andere studie \cite{peck09} echter bevonden dat verbale commando's 
-niet de beste optie zijn voor redirectietechnieken.
-\todo[inline]{Zin herschrijven.}
+Er werd in een andere studie van Peck et. al., 2009 \cite{peck09} echter bevonden 
+dat verbale commando's niet de beste optie zijn voor redirectietechnieken, en dat
+afleidingen betere resultaten geven.
 
 
 \subsubsection{Visuele commandos}
-In het onderzoek van Neth et. al. \cite{neth12} werd onder andere gebruik gemaakt
-van een stopteken. Als dit werd getoond werd de hele virtuele wereld stil gelegd.
-Er werd op voorhand aan de proefpersoon gevraagd rond te draaien tot het 
+In het onderzoek van Neth et. al., 2012 \cite{neth12} werd onder andere gebruik 
+gemaakt van een stopteken. Als dit werd getoond werd de hele virtuele wereld stil 
+gelegd. Er werd op voorhand aan de proefpersoon gevraagd rond te draaien tot het 
 stopteken verdwijnt indien het getoond werd.
 
 Hoewel dit een zeer intrusieve methode is, is ze zeer effectief om het verlaten
@@ -218,15 +221,39 @@ van het tracking gebied te voorkomen.
 
 
 \subsubsection{Afleiders}
-\todo[inline]{Avatars etc...}
+Bovenstaande ROTs zijn allemaal erg intrusief, daarom is er een derde categorie
+van ROTs die tracht zo onopvallend mogelijk te zijn.
+
+Dit is de categorie van de afleidingen, zoals andere ``personen'' in de virtuele
+omgeving\cite{neth12}, om de proefpersoon subtiel in de juiste richting te 
+leiden.
+
+In Peck et. al., 2009 \cite{peck09} wordt er onder andere gebruik gemaakt van een 
+te volgen object (een vlinder) om de proefpersoon de illusie te geven dat hij 
+\mbox{360\textdegree} heeft gedraaid terwijl hij eigenlijk maar 180\textdegree 
+heeft gedraaid. Hieruit bleek dat proefpersonen minder het gevoel hadden dat de
+wereld versneld draaide met een afleiding dan bij andere technieken.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Andere zintuigen}
-\todo[inline]{Technieken voor de andere zintuigen bespreken, audio, aanraking...}
-\todo[inline]{In \cite{engel08} vermelden ze op de voorlaatste pagina iets interessants. Aangeduid op hardcopy.}
-% Om de immersie in de virtuele omgeving te verbeteren werd er ook gebruik gemaakt
-% van positionele audio met met gesloten koptelefoons die het oor volledig omringen.
+Hoewel visie voor redirected walking het belangrijkst is, omdat bij conflicten
+tussen het proprioceptieve en het vestibulaire systeem en visie, visie vaak dit
+conflict wint\cite{berthoz02,dichgans78,bruder08}, zijn de andere zintuigen toch
+belangrijk om immersie te verkrijgen. 
+
+Als men in een virtuele omgevingen geluid realistisch kan positioneel
+reproduceren helpt dit bijvoorbeeld de immersie enorm\cite{lackner77}, maar zelf
+het maskeren van geluid van in de fysieke wereld met bijvoorbeeld ruis kan
+helpen\cite{usoh99}.
+
+In Engel et. al., 2008\cite{engel08} wordt ook opgemerkt dat de hoeveelheid 
+omgevingslicht en omgevingsgeluid dat binnensijpelt een merkbare negatieve 
+invloed heeft op de effectiviteit van redirectietechnieken.
+
+Naast audio is het ook mogelijk om de immersie te verhogen met proxy-objecten in
+de fysieke omgeving die overeen komen met objecten in de virtuele 
+omgeving\cite{steinicke09}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
