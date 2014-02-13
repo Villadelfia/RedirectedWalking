@@ -37,10 +37,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Literatuurstudie}
 \subsection{Inleiding}
-\emph{Redirected walking} is een techniek waarbij een proefpersoon in een virtuele
-omgeving weergegeven in een head-mounted display kan rondwandelen door middel
-van het vervormen van de route die deze proefpersoon in een fysieke omgeving 
-wandelt.
+\emph{Redirected walking} is een techniek waarbij een proefpersoon in een 
+virtuele omgeving weergegeven in een head-mounted display kan rondwandelen door 
+middel van het vervormen van de route die deze proefpersoon in een fysieke 
+omgeving wandelt.
 
 Het doel is, door de 1:1 relatie van fysieke beweging en virtuele beweging te
 ontkoppelen, rondwandelen in grotere tot zelfs arbitrair grote virtuele ruimtes
@@ -55,8 +55,7 @@ beknopt.
 
 Vervolgens zal ik enkele inherente zwaktes in redirected walking toelichten.
 
-Ten laatste beschrijf ik kort de methodes om volledige positionele tracking te
-verwezenlijken.
+Ik behandel dan even de hardware beschikbaar voor dit onderzoek.
 
 Ik zal dan besluiten met de invalshoek die ik zal nemen in deze bachelorproef.
 
@@ -230,7 +229,7 @@ leiden.
 
 In Peck et. al., 2009 \cite{peck09} wordt er onder andere gebruik gemaakt van een 
 te volgen object (een vlinder) om de proefpersoon de illusie te geven dat hij 
-\mbox{360\textdegree} heeft gedraaid terwijl hij eigenlijk maar 180\textdegree 
+\mbox{360\textdegree} heeft gedraaid terwijl hij eigenlijk maar 180\textdegree{}
 heeft gedraaid. Hieruit bleek dat proefpersonen minder het gevoel hadden dat de
 wereld versneld draaide met een afleiding dan bij andere technieken.
 
@@ -273,8 +272,30 @@ potenti\"ele toepassingen zoals virtuele rondleidingen.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Positionele tracking}
-\todo[inline]{Positionele tracking bespreken}
+\subsection{Positionele tracking \& Head-mounted diplays (HMDs)}
+Naast het software aspect van redirected walking is er ook het hardware aspect
+van het positioneel tracken en het head-mounted display.
+
+Er zijn twee grote categorie\"en van head trackers. Inwaartse tracking, waar de
+proefpersoon door \'e\'en of meer camera's in de omgeving wordt getrackt. En
+uitwaartse tracking, waar een camera aan de proefpersoon hangt en deze de
+omgeving trackt.
+
+In het algemeen wordt bij redirected walking gebruik gemaakt van inwaartse 
+tracking\cite{bruder08,engel08,steinicke09,kohn01,neth12,ward92}. Er zijn ook 
+commerci\"ele uitwaartse tracking systemen die gebruikt worden in redirected
+walking onderzoeken\cite{peck09,suma11}. Verder is er nog actief onderzoek naar
+betere uitwaartse tracking systemen\cite{maesen13}.
+
+Voor HMDs is het ideaal om een zo hoog mogelijke field of view te hebben, dit
+lijkt geen groot effect te hebben op de prevalentie van 
+simulatieziekte\cite{arthur00} maar verhoogt de performantie en immersie
+drastisch\cite{arthur00}.
+
+Traditioneel waren HMDs met hoge field of view zeer duur en niet beschikbaar voor
+consumenten, maar tegenwoordig zijn er enkele betaalbare HMDs beschikbaar met een
+redelijk hoge field of view, zoals de Oculus Rift DK1 (110\textdegree{} 
+diagonaal).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
