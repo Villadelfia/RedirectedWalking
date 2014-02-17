@@ -1,0 +1,160 @@
+Full Description of Experiment.
+
+
+Set-up:
+
+The experiment shall be done in a 4x3 tracking area (TA). Which means, with a 
+wall thickness of 5cm, there will be room for a 95cm wide hallway and a 3x3 room.
+
+The test subject (TS) will start the experiment in the virtual world facing north
+40cm into the hallway positioned exactly in the middle (47.5cm).
+
+There will be a permanent 10% movement speed increase in the VE to compensate for
+slight amounts of drift during the course of the experiment. This means that the
+TA only needs to be 91% of the TA that would be needed if there was no such speed
+increase.
+
+For this reason we will keep the outer part of the TA as a safe zone and only use
+the inner 91% of the TA, a 3.64x2.73 rectangle in the middle of the actual TA.
+
+In the physical environment the TS will be asked to stand on an X on the floor
+at exactly 43.225cm from the left side of the safe zone of the TA and exactly 
+36.4cm from the bottom. I will refer to this as the starting position.
+
+Since it's inconvenient to keep refering to coordinates in that way, I will
+define the bottom-left point of the safe zone of the TA as (0, 0). Furthermore
+since scaling all the time is annoying, all numbers past here will be unscaled
+and need to be scaled by 91%.
+
+This means the actual TA will run from (-0.2, -0.15) to (4.2, 3.15), and the safe
+zone of the TA runs from (0, 0) to (4, 3).
+
+
+Process:
+
+The goal of the experiment is to have the TS enter 7 numbered rooms in order,
+close the blinds in each one with a button on the wall, exit the room and close 
+the door behind them.
+
+The closing of the blinds serves as a distractor for the fact that the door will
+move on the wall. The door will move so that the outside center of the door
+corresponds to exactly one half door-width above the bottom edge of the safe zone
+of the VE. This means that if the TS were to walk through the middle of the door
+and stop in the exact center of the hallway, he would be at the starting position
+after exiting the room.
+
+Note that it is not just the door moving, it is the entire hallway that moves.
+This poses the obvious problem of the door for the "next" room appearing in the
+middle of the current room. I will solve this by texturing the back of the doors
+with the same texture as the wall, and by not indenting the door on the inside.
+
+The consequence of this is that the TS has progressed up through the hallway
+while still being at the starting position in the TA.
+
+The closing of the door serves two purposes. The first purpose is to trigger the
+yaw correction system reset.
+
+The second purpose is only needed when the next door is not on the same wall of
+the hallway. In this case, the yaw correction system will be temporarily turned
+off. Then the rotation will be scaled a certain amount such that the wall with
+the next door will be vertical in the TA. At the same time the coordinate system
+of the positional tracking of the positrack system will be rotated as well, to
+match the new rotated VE.
+
+
+BEFORE:                    AFTER:
+
+   v- Next                    
+
+---+\                   |
+    + <- Current        |
+    |                   |
+    |                   + <- Next
+    |               ---+/
+
+                       ^- Current
+
+
+To do this, the system will take the angle the TS is facing in the VE, then
+compares the angle where the TS wants to turn (towards the door) with the
+location where the door will be after the coordinate system rotation and scales
+the rotation in such a way that when the TS is facing the door in the VE, in the
+TA he is facing where the door will be. The exact moment the door closing
+animation is started, the entire world will rotate instantaneously.
+
+Take for example the above situation, if the TS comes out of the "current" door
+at an angle of 170 degrees, he will want to turn 170 degrees to the right or
+190 degrees to the left. However, since world will be rotated 90 degrees
+clockwise, he will actually need to rotate 80 degrees to the right or 280 degrees
+to the left. Which represents a scaling of 47% to the right or 147% to the left.
+These values are of course extremely noticeable in normal conditions, however,
+we are testing if a task reduces the noticeability of this rotation.
+
+It is at this point that the yaw correction is turned back on, with the weight
+100% towards the HMD, it will then, over the course of several seconds, shift
+towards 100% optitrack and reset the reported yaw of the HMD.
+
+After doing this for all 7 rooms, the last door will open and there will be
+a "The End" poster behind the door.
+
+A map of the proposed layout is below:
+
+   6   5   4
+  +---------+             1: Door to first room, starts open
+7 |         | 3         2-7: Door to room, opens when the previous one is closed
+  +E+--+    |             E: Exit door
+  | |   \   |             X: Start
+  | |    \  | 2           P: Poster
+  | |     + |            ::: Dead end
+--+ |     | |
+::  |     | | 1
+---P+     | |
+          |X|
+          +-+
+
+
+Other technical considerations:
+
+YAW DRIFT CORRECTION:
+The HMD has a certain amount of yaw drift. Since this could pose a serious issue
+I will take a weighted average of the yaw reported by the HMD and that of the
+optitrack system. The exact weights during normal operation are still to be
+determined, but 60%/40% in favor of the HMD seems a good idea. Another 
+possibility would be to change the weights in function of movement speed, though
+this would need to be tested.
+
+At certain points the system will be triggered to, over the course of half a
+second or so, to increase the weight of the optitrack system to 100% and then
+reset the reported yaw of the HMD to that point.
+
+Pitch and roll seem to be less of an issue, however, if they do turn out to be an
+issue, a similar system could be used to correct them.
+
+
+WHEN TO REORIENT:
+A potential issue is deciding exactly when to start the rotational distortion. I
+will need to perform some heuristics to make sure the TS does not move while
+rotating.
+
+
+INSTRUCTIONS:
+I will record myself giving instructions, and play them back during the course of
+the first room.
+
+
+FAIL-SAFE:
+There are 3 ways in which the TS could exit the TA:
+
+    1. If the TS bumps into stuff, the safe TA will drift.
+    2. If the TS purposefully ignores instructions, he could walk out of the TA.
+    3. In the reorientation, the TS is assumed to stand still while rotating, if
+       he does not, he could step out of the TA. The safe TA will also move if
+       the TS is not exactly in the middle of the hallway when the world rotates.
+
+In all 3 cases, the system will simply display a red exclamation point and
+teleport the TS to the location in the VE that should correspond to the physical 
+location. Note that this will obviously move the safe TA around.
+
+I could also slowly drift the location of the TS towards where he should be, this
+solves problem 1 and 3, but not 2. I will ignore problem 2. This allows the
+system to keep the safe TA in the middle of the TA.

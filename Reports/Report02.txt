@@ -1,2 +1,16 @@
 BACHELORPROEF MEETING 2                                                13/02/2014
 
+Er werd in deze meeting kort overlopen wat er verbeterd moest worden aan de
+al geleverde literatuurstudie. Ik zal deze herschrijven met minder lange zinnen 
+en een betere verdeling van paragrafen. Ook zal ik meer aandacht besteden aan het
+deel over afleiders voor reoriëntatietechnieken.
+
+Voor het concrete onderwerp van de bachelorproef heb ik een onderzoek naar de
+effectiviteit van taakgebonden afleiders in reoriëntatie en veranderingsblindheid
+voorgesteld. Concreet zou dit een gang in een kantoorgebouw zijn met als taak de
+blinden in elk kantoor te sluiten (waarna de deur van locatie wisselt) en bij het
+buiten komen de deur te sluiten (hier gebeurt dan reoriëntatie).
+
+Concreet zal ik nu eerst de komende weken Unity leren en een ruwe versie van dit
+scenario uitwerken. Deze eerste versie zal bestuurd worden met toetsenbord en de
+pitch/yaw/roll van de oculus rift.
