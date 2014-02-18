@@ -32,7 +32,7 @@ zone of the TA runs from (0, 0) to (4, 3).
 
 Process:
 
-The goal of the experiment is to have the TS enter 7 numbered rooms in order,
+The goal of the experiment is to have the TS enter 5 numbered rooms in order,
 close the blinds in each one with a button on the wall, exit the room and close 
 the door behind them.
 
@@ -94,23 +94,23 @@ It is at this point that the yaw correction is turned back on, with the weight
 100% towards the HMD, it will then, over the course of several seconds, shift
 towards 100% optitrack and reset the reported yaw of the HMD.
 
-After doing this for all 7 rooms, the last door will open and there will be
+After doing this for all 5 rooms, the last door will open and there will be
 a "The End" poster behind the door.
 
 A map of the proposed layout is below:
 
-   6   5   4
-  +---------+             1: Door to first room, starts open
-7 |         | 3         2-7: Door to room, opens when the previous one is closed
-  +E+--+    |             E: Exit door
-  | |   \   |             X: Start
-  | |    \  | 2           P: Poster
-  | |     + |            ::: Dead end
---+ |     | |
-::  |     | | 1
----P+     | |
-          |X|
-          +-+
+           5   4   
+          +---------+             1: Door to first room, starts open
+     |:|  |         | 3         2-7: Door to room, opens when previous one closed
+     |:|  | +-----+ |             E: Exit door
+     | +--+ |     | |             X: Start
+     P    E |     | | 2           P: Poster
+     | +--+ |     | |            ::: Continues
+     |:|  | |     | |
+     |:|  | |     | | 1
+          | |     | |
+          |:|     |X|
+          |:|     +-+
 
 
 Other technical considerations:
@@ -129,6 +129,12 @@ reset the reported yaw of the HMD to that point.
 
 Pitch and roll seem to be less of an issue, however, if they do turn out to be an
 issue, a similar system could be used to correct them.
+
+
+TA DRIFT CORRECTION:
+As explained in FAIL-SAFE it might be needed to drift the location of the TS back
+to where it belongs, however, we will be doing this explicitly between doors 3
+and 4 and doors 5 and E. Because the hallway rotation causes some TA drift.
 
 
 WHEN TO REORIENT:
