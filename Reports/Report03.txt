@@ -1,0 +1,17 @@
+BACHELORPROEF MEETING 3                                                28/02/2014
+
+Er werd in deze meeting kort besproken wat het geleverde werk tot dit punt is.
+Met name, ik heb de omgeving klaar met uitzondering van kamervulling en ik heb
+een implementatie van de testen voor change blindness.
+
+Ik heb ook enkele ideeën getoond van hoe ik de overblijvende problemen wil
+oplossen. Ik wilde het probleem van hoogfrequent ruis oplossen met een gewogen
+gemiddelde van de twee sensors, maar er werd me ook aangeraden om dit op te
+lossen met een andere sensor fusion methode. Ten laatste hebben we ook een beetje
+zitten na te denken over een goed systeem voor collisions in de virtuele 
+omgeving, ik heb gezegd dit voorlopig te willen negeren en als laatste stap te 
+houden.
+
+Steven zal nu het trackinglokaal voor me boeken en me iets laten weten wanneer
+dit beschikbaar is. Tot dat lokaal beschikbaar is zal ik verderwerken aan de
+kamervulling en de literatuurstudie.
