@@ -13,11 +13,13 @@ public class TrickManager : MonoBehaviour {
     GameObject officeInstance;
     Transform button;
     Transform blinds;
+    float timeout = 1.5f;
 
     int ctr;
 
     // Use this for initialization
     void Start() {
+        Screen.showCursor = false;
         ctr = 0;
         officeInstance = (GameObject)Instantiate(office, new Vector3(-2.5f, 0f, -1.5f), Quaternion.identity);
         button = officeInstance.transform.Find("button/button");
@@ -27,7 +29,9 @@ public class TrickManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetButtonDown("Fire1")) {
+        timeout -= Time.deltaTime;
+        if(Input.GetButtonDown("Fire1") && timeout <= 0f) {
+            timeout = 1.5f;
             ++ctr;
             switch(ctr) {
                 case 1: // Clicking button in room 1
