@@ -1,0 +1,15 @@
+BACHELORPROEF MEETING 4                                                12/03/2014
+
+Ik heb vandaag kort de voortgang in de aankleding van het kantoor getoond. Er 
+werd hier opgemerkt dat ik best enkele verschillende prefabs zou kunnen maken
+voor de kamers voor variëteit.
+
+Achteraf zijn we de trackingruimte gaan bekijken om te bespreken hoe en wanneer
+ik daar het best zou kunnen werken rond de basisintegratie van het optitrack
+systeem in mijn virtuele omgeving. Ik heb gezegd vanaf maandag middag daar te
+beginnen met het werk aan de integratie.
+
+Ik heb afgesproken zelf contact te nemen om een afspraak te regelen als de
+integratie compleet is. Dit houdt in dat ik een werkende kalibratie en mapping
+heb tussen het systeem en mijn virtuele omgeving. Daarna zal ik beginnen met
+sensor fusion tussen mijn Oculus Rift en het Optitrack systeem.
