@@ -6,6 +6,7 @@ OculusRiftUntracked/
 *.csproj
 *.unityproj
 *.sln
+*.suo
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
