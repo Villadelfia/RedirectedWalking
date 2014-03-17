@@ -30,7 +30,7 @@ public class TrickManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         timeout -= Time.deltaTime;
-        if(Input.GetButtonDown("Fire1") && timeout <= 0f) {
+        if(Input.GetButtonDown("Activate") && timeout <= 0f) {
             timeout = 1.5f;
             ++ctr;
             switch(ctr) {
