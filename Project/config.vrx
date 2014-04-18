@@ -4,7 +4,7 @@
     <DeviceManager WandAxis="0" WandHorizontalAxis="0" WandHorizontalAxisScale="1" WandVerticalAxis="1" WandVerticalAxisScale="1" WandButtons="0" WandButton0="0" WandButton1="1" WandButton2="2" WandButton3="3" WandButton4="4" WandButton5="5">
         <Driver Type="vrDriverDirectInput" />
         <Driver Type="vrDriverVRPN">
-            <Tracker Address="ts@169.254.125.42" ChannelIndex="0" ChannelsNb="1" Name="OptiTrack" Right="-X" Front="Z" Up="Y" NeutralPosition="0.000000,0.000000,0.000000" WaitForData="0" />
+            <Tracker Address="ts@169.254.125.42" ChannelIndex="0" ChannelsNb="1" Name="OptiTrack" Right="Z" Front="X" Up="Y" NeutralPosition="0.000000,0.000000,0.000000" WaitForData="0" />
         </Driver>
         <Driver Type="vrDriverOculusRift" />
         <Tracker Name="SensorFusion" NeutralPosition="0.000000,0.000000,0.000000" NeutralOrientation="0.000000,0.000000,0.000000,1.000000" />

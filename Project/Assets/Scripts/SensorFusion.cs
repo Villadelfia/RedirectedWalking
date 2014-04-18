@@ -16,6 +16,9 @@ public class SensorFusion : MonoBehaviour {
 
     private bool zeroSet = false;
     private vrVec3 zero;
+    private float yawZeroOpti = 0;
+    private float prevYaw = 0;
+    private bool firstFrame = true;
 
     // Start
     void Start() {
@@ -49,6 +52,7 @@ public class SensorFusion : MonoBehaviour {
                 if(zeroSet == true)
                     MiddleVRTools.Log("[>] SensorFusion: Resetting zero point.");
                 zero = optiTrack.GetPosition();
+                yawZeroOpti = optiTrack.GetYaw();
                 zeroSet = true;
             }
 
@@ -64,10 +68,45 @@ public class SensorFusion : MonoBehaviour {
             virtualTracker.SetZ(z);
 
             // Orientation
-            virtualTracker.SetYaw(optiTrack.GetYaw());
+            virtualTracker.SetYaw(getModifiedYaw());
             virtualTracker.SetPitch(oculusRift.GetPitch());
             virtualTracker.SetRoll(oculusRift.GetRoll());
 
+            firstFrame = false;
         }
+    }
+
+    private float getModifiedYaw() {
+        // Get yaw from optitrack tracker.
+        float a = optiTrack.GetYaw() - yawZeroOpti;
+        a = normAngle(a);
+
+        // If not first frame, take avg of last 2 measurements.
+        if(!firstFrame) {
+            if(Mathf.Abs(a - prevYaw) > 180.0f) {
+                if(a > prevYaw) {
+                    prevYaw += 360.0f;
+                } else {
+                    a += 360.0f;
+                }
+            }
+            a = (a + prevYaw) / 2.0f;
+        }
+        a = normAngle(a);
+        prevYaw = a;
+
+        return a - 180.0f;
+    }
+
+    private float normAngle(float a) {
+        while(a < 0) {
+            a += 360;
+        }
+
+        while(a >= 360) {
+            a -= 360;
+        }
+
+        return a;
     }
 }
