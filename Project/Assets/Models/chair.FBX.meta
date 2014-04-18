@@ -201,6 +201,39 @@ ModelImporter:
     4300062: llanta67
     4300064: Cylinder96
     4300066: Cylinder97
+    6400000: Box08
+    6400002: Box20
+    6400004: Color007.18
+    6400006: Cylinder87
+    6400008: Cylinder90
+    6400010: Cylinder91
+    6400012: Cylinder92
+    6400014: Cylinder93
+    6400016: Cylinder94
+    6400018: Cylinder95
+    6400020: Cylinder96
+    6400022: Cylinder97
+    6400024: Cylinder98
+    6400026: Cylinder99
+    6400028: llanta57
+    6400030: llanta58
+    6400032: llanta59
+    6400034: llanta61
+    6400036: llanta62
+    6400038: llanta64
+    6400040: llanta65
+    6400042: llanta67
+    6400044: llanta68
+    6400046: llanta70
+    6400048: Loft69
+    6400050: Loft70
+    6400052: Loft71
+    6400054: Loft72
+    6400056: Object02
+    6400058: Object53
+    6400060: Object54
+    6400062: Object55
+    6400064: Rectangle53
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -222,7 +255,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: .00999999978
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
