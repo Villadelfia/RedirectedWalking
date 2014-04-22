@@ -1,6 +1,8 @@
-﻿using System.ComponentModel;
-using UnityEngine;
+﻿using System;
 using System.Collections;
+using System.IO.Ports;
+using System.Threading;
+using UnityEngine;
 
 public class TrickManager : MonoBehaviour {
     public GameObject Hallway;
@@ -12,15 +14,22 @@ public class TrickManager : MonoBehaviour {
     public GameObject Office2;
     public GameObject Office3;
     public GameObject EndRoom;
+    public String PortName = "COM1";
     GameObject _officeInstance;
     Transform _button;
     Transform _blinds;
     float _timeout = 1.5f;
     int _ctr;
+    private SerialPort _port;
+    private bool _triggered = false;
 
     // Use this for initialization
     void Start() {
         Screen.showCursor = false;
+        _port = new SerialPort(PortName, 9600);
+        _port.Open();
+        Thread t = new Thread(GetControllerStatus);
+        t.Start();
         _ctr = 0;
         _officeInstance = (GameObject)Instantiate(Office1, new Vector3(-2.5f, 0f, -1.5f), Quaternion.identity);
         _button = _officeInstance.transform.Find("button/button");
@@ -31,7 +40,7 @@ public class TrickManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         _timeout -= Time.deltaTime;
-        if(Input.GetButtonDown("Activate") && _timeout <= 0f) {
+        if((Input.GetButtonDown("Activate") || _triggered) && _timeout <= 0f) {
             _timeout = 1.5f;
             ++_ctr;
             switch(_ctr) {
@@ -67,6 +76,12 @@ public class TrickManager : MonoBehaviour {
                     break;
             }
         }
+        _triggered = false;
+    }
+
+    void OnApplicationQuit() {
+        _port.Close();
+        Debug.Log("Quitting");
     }
 
     // Move the hallway 1.6m back.
@@ -97,28 +112,28 @@ public class TrickManager : MonoBehaviour {
         yield return new WaitForSeconds(delay);
         Destroy(_officeInstance);
 
-        switch (_ctr) {
+        switch(_ctr) {
             case 2:
                 _officeInstance =
-                    (GameObject) Instantiate(Office2, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+                    (GameObject)Instantiate(Office2, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = _officeInstance.transform.Find("button/button");
                 _blinds = _officeInstance.transform.Find("blinds");
                 break;
             case 4:
                 _officeInstance =
-                    (GameObject) Instantiate(Office3, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+                    (GameObject)Instantiate(Office3, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = _officeInstance.transform.Find("button/button");
                 _blinds = _officeInstance.transform.Find("blinds");
                 break;
             case 6:
                 _officeInstance =
-                    (GameObject) Instantiate(EndRoom, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+                    (GameObject)Instantiate(EndRoom, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = null;
                 _blinds = null;
                 break;
             default:
                 _officeInstance =
-                    (GameObject) Instantiate(Office1, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+                    (GameObject)Instantiate(Office1, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = _officeInstance.transform.Find("button/button");
                 _blinds = _officeInstance.transform.Find("blinds");
                 break;
@@ -152,5 +167,14 @@ public class TrickManager : MonoBehaviour {
 
         _blinds.transform.position = end;
         yield return true;
+    }
+
+    void GetControllerStatus() {
+        while(true) {
+            if(!_triggered) {
+                _triggered = _port.ReadChar() == '1';
+            }
+            _port.DiscardInBuffer();
+        }
     }
 }
