@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.IO;
 using System.IO.Ports;
 using System.Threading;
 using UnityEngine;
 
 public class TrickManager : MonoBehaviour {
+    // External Settings
     public GameObject Hallway;
     public GameObject Door1;
     public GameObject Door2;
@@ -15,34 +17,51 @@ public class TrickManager : MonoBehaviour {
     public GameObject Office3;
     public GameObject EndRoom;
     public String PortName = "COM1";
+
+    // Internals
     GameObject _officeInstance;
     Transform _button;
     Transform _blinds;
     float _timeout = 1.5f;
-    int _ctr;
-    private SerialPort _port;
-    private bool _triggered = false;
+    int _ctr = 1;
+    SerialPort _port;
+    volatile bool _triggered = false;
 
-    // Use this for initialization
+    // Initialization
     void Start() {
-        Screen.showCursor = false;
+        // Open the SerialPort to the controller
         _port = new SerialPort(PortName, 9600);
-        _port.Open();
+        try {
+            _port.Open();
+        } catch(IOException) {
+            // Ignore, we can run without a controller.
+            Debug.Log("Controller not connected.");
+        }
+
+        // Start the Serial polling thread.
         Thread t = new Thread(GetControllerStatus);
         t.Start();
-        _ctr = 0;
+
+        // Init the first room and find the needed opbjects within
         _officeInstance = (GameObject)Instantiate(Office1, new Vector3(-2.5f, 0f, -1.5f), Quaternion.identity);
         _button = _officeInstance.transform.Find("button/button");
         _blinds = _officeInstance.transform.Find("blinds");
+
+        // Open the first door
         StartCoroutine(RotateDoor(Door1, 0.3f, false));
     }
 
     // Update is called once per frame
     void Update() {
+        // Decrement the delay between actions
         _timeout -= Time.deltaTime;
-        if((Input.GetButtonDown("Activate") || _triggered) && _timeout <= 0f) {
+
+        // Check if a transition is requested, and that it is allowed by position, view and timeout
+        if((Input.GetButtonDown("Activate") || _triggered) && _timeout <= 0f && CanTriggerNextStep()) {
+            // Reset the timeout
             _timeout = 1.5f;
-            ++_ctr;
+
+            // Make the animation happen based on the active step
             switch(_ctr) {
                 case 1: // Clicking button in room 1
                     StartCoroutine(MoveHallway1(0f, 0f, 1.6f));
@@ -75,13 +94,18 @@ public class TrickManager : MonoBehaviour {
                     StartCoroutine(RotateDoor(Door4, 0.6f, false));
                     break;
             }
+
+            // Increment the "step" of the process
+            ++_ctr;
         }
+
+        // Reset the controller input
         _triggered = false;
     }
 
+    // Cleanup
     void OnApplicationQuit() {
         _port.Close();
-        Debug.Log("Quitting");
     }
 
     // Move the hallway 1.6m back.
@@ -91,6 +115,7 @@ public class TrickManager : MonoBehaviour {
         yield return true;
     }
 
+    // Open or close a door, meaning a 90 degree rotation in a certain direction
     IEnumerator RotateDoor(GameObject door, float delay = 0f, bool close = true) {
         yield return new WaitForSeconds(delay);
 
@@ -108,24 +133,25 @@ public class TrickManager : MonoBehaviour {
         yield return true;
     }
 
+    // Destroy and replace the existing office
     IEnumerator RespawnRoom(float delay = 0f, float rot = 0f, float x = -2.5f, float y = 0f, float z = -1.5f) {
         yield return new WaitForSeconds(delay);
         Destroy(_officeInstance);
 
         switch(_ctr) {
-            case 2:
+            case 3:
                 _officeInstance =
                     (GameObject)Instantiate(Office2, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = _officeInstance.transform.Find("button/button");
                 _blinds = _officeInstance.transform.Find("blinds");
                 break;
-            case 4:
+            case 5:
                 _officeInstance =
                     (GameObject)Instantiate(Office3, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = _officeInstance.transform.Find("button/button");
                 _blinds = _officeInstance.transform.Find("blinds");
                 break;
-            case 6:
+            case 7:
                 _officeInstance =
                     (GameObject)Instantiate(EndRoom, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
                 _button = null;
@@ -141,6 +167,7 @@ public class TrickManager : MonoBehaviour {
         yield return true;
     }
 
+    // Play the animation for pressing the button
     IEnumerator DepressButton(float delay = 0f, bool isRotated = false) {
         yield return new WaitForSeconds(delay);
         Vector3 begin = _button.transform.position;
@@ -155,6 +182,7 @@ public class TrickManager : MonoBehaviour {
         yield return true;
     }
 
+    // Play the animation for closing the blinds
     IEnumerator DescendBlinds(float delay = 0f) {
         yield return new WaitForSeconds(delay);
         Vector3 begin = _blinds.transform.position;
@@ -169,12 +197,56 @@ public class TrickManager : MonoBehaviour {
         yield return true;
     }
 
+    // Set the triggered state if the button is pressed on the controller
     void GetControllerStatus() {
+        if(!_port.IsOpen)
+            return;
         while(true) {
             if(!_triggered) {
                 _triggered = _port.ReadChar() == '1';
             }
             _port.DiscardInBuffer();
         }
+    }
+
+    // Returns the distance on the XZ plane of our position to a point
+    float Distance(Vector3 pos) {
+        Vector2 v1 = new Vector2(transform.position.x, transform.position.z);
+        Vector2 v2 = new Vector2(pos.x, pos.z);
+        return Vector2.Distance(v1, v2);
+    }
+
+    // Is Vector3 in view
+    bool InView(Vector3 v) {
+        v.y = Camera.main.transform.position.y;
+        Vector3 vis = Camera.main.WorldToViewportPoint(v);
+        if((vis.x < 0 || vis.x > 1) || vis.z <= 0) {
+            return false;
+        }
+        return true;
+    }
+
+    // Checks the distance to the next object to activate, and if it is visible
+    bool CanTriggerNextStep() {
+        Vector3 doorPosition = new Vector3(-1f, 0f, -0.4f);
+        switch (_ctr) {
+            case 1:
+            case 3:
+            case 5:
+                // Is the "button" visible and within 1 meter
+                if(_button.renderer.isVisible && Distance(_button.position) <= 1f) {
+                    return true;
+                }
+                break;
+            case 2:
+            case 4:
+            case 6:
+                // Is door1 visible and within 1 meter
+                if(InView(doorPosition) && Distance(doorPosition) <= 1f) {
+                    return true;
+                }
+                break;
+        }
+        return false;
     }
 }
