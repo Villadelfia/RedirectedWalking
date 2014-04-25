@@ -15,17 +15,22 @@ public class TrickManager : MonoBehaviour {
     public GameObject Office1;
     public GameObject Office2;
     public GameObject Office3;
+    public Light Light1;
+    public Light Light2;
+    public Light Light3;
     public GameObject EndRoom;
+    public Material EndRoomMaterial;
     public String PortName = "COM1";
 
     // Internals
-    GameObject _officeInstance;
-    Transform _button;
-    Transform _blinds;
-    float _timeout = 1.5f;
-    int _ctr = 1;
-    SerialPort _port;
-    volatile bool _triggered = false;
+    private GameObject _officeInstance;
+    private Transform _button;
+    private Transform _blinds;
+    private float _timeout = 1.5f;
+    private int _ctr = 1;
+    private SerialPort _port;
+    private volatile bool _triggered = false;
+    private bool _ended = false;
 
     // Initialization
     void Start() {
@@ -53,6 +58,9 @@ public class TrickManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        if(_ended)
+            return;
+
         // Decrement the delay between actions
         _timeout -= Time.deltaTime;
 
@@ -64,7 +72,7 @@ public class TrickManager : MonoBehaviour {
             // Make the animation happen based on the active step
             switch(_ctr) {
                 case 1: // Clicking button in room 1
-                    StartCoroutine(MoveHallway1(0f, 0f, 1.6f));
+                    StartCoroutine(MoveHallway(0f, 0f, 1.6f));
                     StartCoroutine(DescendBlinds());
                     StartCoroutine(DepressButton());
                     break;
@@ -74,7 +82,7 @@ public class TrickManager : MonoBehaviour {
                     StartCoroutine(RotateDoor(Door2, 0.6f, false));
                     break;
                 case 3: // Clicking button in room 2
-                    StartCoroutine(MoveHallway1(0f, 0f, 1.6f));
+                    StartCoroutine(MoveHallway(0f, 0f, 1.6f));
                     StartCoroutine(DescendBlinds());
                     StartCoroutine(DepressButton());
                     break;
@@ -84,7 +92,7 @@ public class TrickManager : MonoBehaviour {
                     StartCoroutine(RotateDoor(Door3, 0.6f, false));
                     break;
                 case 5: // Clicking button in room 3
-                    StartCoroutine(MoveHallway1(0f, 0f, 1.6f));
+                    StartCoroutine(MoveHallway(0f, 0f, 1.6f));
                     StartCoroutine(DescendBlinds());
                     StartCoroutine(DepressButton());
                     break;
@@ -99,17 +107,31 @@ public class TrickManager : MonoBehaviour {
             ++_ctr;
         }
 
+        // After the last door is opened, and the endroom has been entered.
+        if(_ctr == 7 && InView(new Vector3(-2f, 0f, -2f)) && Distance(new Vector3(-2f, 0f, -2f)) <= 1f) {
+            StartCoroutine(EndScene());
+            _ended = true;
+        }
+
+        // Emergency stop
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            OnApplicationQuit();
+            Application.LoadLevel("empty");
+        }
+
         // Reset the controller input
         _triggered = false;
     }
 
     // Cleanup
     void OnApplicationQuit() {
+        Debug.Log("Cleaning up...");
         _port.Close();
+        EndRoomMaterial.color = Color.white;
     }
 
     // Move the hallway 1.6m back.
-    IEnumerator MoveHallway1(float x, float y, float z, float delay = 0) {
+    IEnumerator MoveHallway(float x, float y, float z, float delay = 0) {
         yield return new WaitForSeconds(delay);
         Hallway.transform.Translate(x, y, z);
         yield return true;
@@ -197,14 +219,40 @@ public class TrickManager : MonoBehaviour {
         yield return true;
     }
 
+    // Ends the scene after 5 seconds
+    IEnumerator EndScene() {
+        Debug.Log("Ending scene in 20 seconds...");
+        StartCoroutine(DimLights());
+        yield return new WaitForSeconds(20f);
+        OnApplicationQuit();
+        Application.LoadLevel("empty");
+        yield return true;
+    }
+
+    // Turns off the lights
+    IEnumerator DimLights() {
+        float begin1 = Light1.intensity;
+        float begin2 = Light2.intensity;
+        float begin3 = Light3.intensity;
+        float colVal = 1f;
+
+        for(float i = 0f; i < 5f; i += Time.deltaTime) {
+            Light1.intensity = Mathf.Lerp(begin1, 0, i / 5f);
+            Light2.intensity = Mathf.Lerp(begin2, 0, i / 5f);
+            Light3.intensity = Mathf.Lerp(begin3, 0, i / 5f);
+            colVal = Mathf.Lerp(1f, 0f, i / 5f);
+            EndRoomMaterial.color = new Color(colVal, colVal, colVal);
+            yield return true;
+        }
+        yield return true;
+    }
+
     // Set the triggered state if the button is pressed on the controller
     void GetControllerStatus() {
         if(!_port.IsOpen)
             return;
         while(true) {
-            if(!_triggered) {
-                _triggered = _port.ReadChar() == '1';
-            }
+            _triggered = _port.ReadChar() == '1';
             _port.DiscardInBuffer();
         }
     }
@@ -229,12 +277,13 @@ public class TrickManager : MonoBehaviour {
     // Checks the distance to the next object to activate, and if it is visible
     bool CanTriggerNextStep() {
         Vector3 doorPosition = new Vector3(-1f, 0f, -0.4f);
+        Vector3 buttonPosition = new Vector3(-4f, 0f, -3f);
         switch (_ctr) {
             case 1:
             case 3:
             case 5:
                 // Is the "button" visible and within 1 meter
-                if(_button.renderer.isVisible && Distance(_button.position) <= 1f) {
+                if(InView(buttonPosition) && Distance(buttonPosition) <= 1f) {
                     return true;
                 }
                 break;
