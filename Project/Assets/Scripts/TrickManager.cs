@@ -4,6 +4,8 @@ using System.IO;
 using System.IO.Ports;
 using System.Threading;
 using UnityEngine;
+using MiddleVR_Unity3D;
+
 
 public class TrickManager : MonoBehaviour {
     // External Settings
@@ -21,6 +23,7 @@ public class TrickManager : MonoBehaviour {
     public GameObject EndRoom;
     public Material EndRoomMaterial;
     public String PortName = "COM1";
+    public bool isVr = false;
 
     // Internals
     private GameObject _officeInstance;
@@ -31,6 +34,7 @@ public class TrickManager : MonoBehaviour {
     private SerialPort _port;
     private volatile bool _triggered = false;
     private bool _ended = false;
+    private vrTracker tracker = null;
 
     // Initialization
     void Start() {
@@ -47,10 +51,18 @@ public class TrickManager : MonoBehaviour {
         Thread t = new Thread(GetControllerStatus);
         t.Start();
 
+        // Get the tracker
+        if(isVr) {
+            tracker = MiddleVR.VRDeviceMgr.GetTracker("SensorFusion");
+        }
+
         // Init the first room and find the needed opbjects within
-        _officeInstance = (GameObject)Instantiate(Office1, new Vector3(-2.5f, 0f, -1.5f), Quaternion.identity);
+        _officeInstance = (GameObject) Instantiate(Office1, new Vector3(-2.5f, 0f, -1.5f), Quaternion.identity);
         _button = _officeInstance.transform.Find("button/button");
         _blinds = _officeInstance.transform.Find("blinds");
+
+        // Disable cursor
+        Screen.showCursor = false;
 
         // Open the first door
         StartCoroutine(RotateDoor(Door1, 0.3f, false));
@@ -71,36 +83,36 @@ public class TrickManager : MonoBehaviour {
 
             // Make the animation happen based on the active step
             switch(_ctr) {
-                case 1: // Clicking button in room 1
-                    StartCoroutine(MoveHallway(0f, 0f, 1.6f));
-                    StartCoroutine(DescendBlinds());
-                    StartCoroutine(DepressButton());
-                    break;
-                case 2: // Closing door of room 1
-                    StartCoroutine(RotateDoor(Door1));
-                    StartCoroutine(RespawnRoom(0.6f));
-                    StartCoroutine(RotateDoor(Door2, 0.6f, false));
-                    break;
-                case 3: // Clicking button in room 2
-                    StartCoroutine(MoveHallway(0f, 0f, 1.6f));
-                    StartCoroutine(DescendBlinds());
-                    StartCoroutine(DepressButton());
-                    break;
-                case 4: // Closing door of room 2
-                    StartCoroutine(RotateDoor(Door2));
-                    StartCoroutine(RespawnRoom(0.6f));
-                    StartCoroutine(RotateDoor(Door3, 0.6f, false));
-                    break;
-                case 5: // Clicking button in room 3
-                    StartCoroutine(MoveHallway(0f, 0f, 1.6f));
-                    StartCoroutine(DescendBlinds());
-                    StartCoroutine(DepressButton());
-                    break;
-                case 6: // Closing door of room 3
-                    StartCoroutine(RotateDoor(Door3));
-                    StartCoroutine(RespawnRoom(0.6f, 0f, -1f, 0f, -1.6f));
-                    StartCoroutine(RotateDoor(Door4, 0.6f, false));
-                    break;
+            case 1: // Clicking button in room 1
+                StartCoroutine(MoveHallway(0f, 0f, 1.6f));
+                StartCoroutine(DescendBlinds());
+                StartCoroutine(DepressButton());
+                break;
+            case 2: // Closing door of room 1
+                StartCoroutine(RotateDoor(Door1));
+                StartCoroutine(RespawnRoom(0.6f));
+                StartCoroutine(RotateDoor(Door2, 0.6f, false));
+                break;
+            case 3: // Clicking button in room 2
+                StartCoroutine(MoveHallway(0f, 0f, 1.6f));
+                StartCoroutine(DescendBlinds());
+                StartCoroutine(DepressButton());
+                break;
+            case 4: // Closing door of room 2
+                StartCoroutine(RotateDoor(Door2));
+                StartCoroutine(RespawnRoom(0.6f));
+                StartCoroutine(RotateDoor(Door3, 0.6f, false));
+                break;
+            case 5: // Clicking button in room 3
+                StartCoroutine(MoveHallway(0f, 0f, 1.6f));
+                StartCoroutine(DescendBlinds());
+                StartCoroutine(DepressButton());
+                break;
+            case 6: // Closing door of room 3
+                StartCoroutine(RotateDoor(Door3));
+                StartCoroutine(RespawnRoom(0.6f, 0f, -1f, 0f, -1.6f));
+                StartCoroutine(RotateDoor(Door4, 0.6f, false));
+                break;
             }
 
             // Increment the "step" of the process
@@ -161,30 +173,30 @@ public class TrickManager : MonoBehaviour {
         Destroy(_officeInstance);
 
         switch(_ctr) {
-            case 3:
-                _officeInstance =
-                    (GameObject)Instantiate(Office2, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
-                _button = _officeInstance.transform.Find("button/button");
-                _blinds = _officeInstance.transform.Find("blinds");
-                break;
-            case 5:
-                _officeInstance =
-                    (GameObject)Instantiate(Office3, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
-                _button = _officeInstance.transform.Find("button/button");
-                _blinds = _officeInstance.transform.Find("blinds");
-                break;
-            case 7:
-                _officeInstance =
-                    (GameObject)Instantiate(EndRoom, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
-                _button = null;
-                _blinds = null;
-                break;
-            default:
-                _officeInstance =
-                    (GameObject)Instantiate(Office1, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
-                _button = _officeInstance.transform.Find("button/button");
-                _blinds = _officeInstance.transform.Find("blinds");
-                break;
+        case 3:
+            _officeInstance =
+                (GameObject) Instantiate(Office2, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+            _button = _officeInstance.transform.Find("button/button");
+            _blinds = _officeInstance.transform.Find("blinds");
+            break;
+        case 5:
+            _officeInstance =
+                (GameObject) Instantiate(Office3, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+            _button = _officeInstance.transform.Find("button/button");
+            _blinds = _officeInstance.transform.Find("blinds");
+            break;
+        case 7:
+            _officeInstance =
+                (GameObject) Instantiate(EndRoom, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+            _button = null;
+            _blinds = null;
+            break;
+        default:
+            _officeInstance =
+                (GameObject) Instantiate(Office1, new Vector3(x, y, z), Quaternion.AngleAxis(rot, Vector3.up));
+            _button = _officeInstance.transform.Find("button/button");
+            _blinds = _officeInstance.transform.Find("blinds");
+            break;
         }
         yield return true;
     }
@@ -259,42 +271,55 @@ public class TrickManager : MonoBehaviour {
 
     // Returns the distance on the XZ plane of our position to a point
     float Distance(Vector3 pos) {
-        Vector2 v1 = new Vector2(transform.position.x, transform.position.z);
-        Vector2 v2 = new Vector2(pos.x, pos.z);
-        return Vector2.Distance(v1, v2);
+        if(isVr) {
+            Vector2 v1 = new Vector2(tracker.GetX(), tracker.GetY());
+            Vector2 v2 = new Vector2(pos.x, pos.z);
+            Debug.Log(Vector2.Distance(v1, v2));
+            return Vector2.Distance(v1, v2);
+        } else {
+            Vector2 v1 = new Vector2(transform.position.x, transform.position.z);
+            Vector2 v2 = new Vector2(pos.x, pos.z);
+            Debug.Log(Vector2.Distance(v1, v2));
+            return Vector2.Distance(v1, v2);
+        }
     }
 
     // Is Vector3 in view
     bool InView(Vector3 v) {
-        v.y = Camera.main.transform.position.y;
-        Vector3 vis = Camera.main.WorldToViewportPoint(v);
-        if((vis.x < 0 || vis.x > 1) || vis.z <= 0) {
-            return false;
+        if(isVr) {
+            // No idea how to get the camera...
+            return true;
+        } else {
+            v.y = Camera.main.transform.position.y;
+            Vector3 vis = Camera.main.WorldToViewportPoint(v);
+            if((vis.x < 0 || vis.x > 1) || vis.z <= 0) {
+                return false;
+            }
+            return true;
         }
-        return true;
     }
 
     // Checks the distance to the next object to activate, and if it is visible
     bool CanTriggerNextStep() {
         Vector3 doorPosition = new Vector3(-1f, 0f, -0.4f);
         Vector3 buttonPosition = new Vector3(-4f, 0f, -3f);
-        switch (_ctr) {
-            case 1:
-            case 3:
-            case 5:
-                // Is the "button" visible and within 1 meter
-                if(InView(buttonPosition) && Distance(buttonPosition) <= 1f) {
-                    return true;
-                }
-                break;
-            case 2:
-            case 4:
-            case 6:
-                // Is door1 visible and within 1 meter
-                if(InView(doorPosition) && Distance(doorPosition) <= 1f) {
-                    return true;
-                }
-                break;
+        switch(_ctr) {
+        case 1:
+        case 3:
+        case 5:
+            // Is the "button" visible and within 1 meter
+            if(InView(buttonPosition) && Distance(buttonPosition) <= 1f) {
+                return true;
+            }
+            break;
+        case 2:
+        case 4:
+        case 6:
+            // Is door1 visible and within 1 meter
+            if(InView(doorPosition) && Distance(doorPosition) <= 1f) {
+                return true;
+            }
+            break;
         }
         return false;
     }

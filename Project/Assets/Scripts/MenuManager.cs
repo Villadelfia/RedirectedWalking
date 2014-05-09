@@ -41,7 +41,7 @@ public class MenuManager : MonoBehaviour {
 
         if(Input.GetButtonDown("Activate") || _triggered) {
             // Go from blue BG -> green BG -> load next scene.
-            if (Camera.main.backgroundColor == Color.grey) {
+            if(Camera.main.backgroundColor == Color.grey) {
                 Camera.main.backgroundColor = Color.green * 0.5f;
                 _timer = 1f;
             } else {
@@ -55,6 +55,7 @@ public class MenuManager : MonoBehaviour {
         }
 
         _triggered = false;
+        Screen.showCursor = false;
     }
 
     // Cleanup
@@ -81,10 +82,10 @@ public class MenuManager : MonoBehaviour {
     }
 
     void Quit() {
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#else
         Application.Quit();
-        #endif
+#endif
     }
 }
