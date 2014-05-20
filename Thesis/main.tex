@@ -1,20 +1,48 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{report}
 
 % BEGIN Definitions.
 \makeatletter
-\title{Hier komt een fancy, ingewikkelde en hopelijk betekenisvolle titel.}  \let\Title\@title
-\author{Voornaam Achternaam}                        \let\Author\@author
-\date{January 2014}
+\title{Effectiviteit van afleidende taken voor het gebruik van change blindness in een virtuele omgeving.}  \let\Title\@title
+\author{Randy Thiemann}                        \let\Author\@author
+\date{Mei 2014}
 \makeatother
 % END Definitions.
 
 % BEGIN Packages.
-\usepackage{geometry}
-\usepackage{color}
-\usepackage{graphicx}
 \usepackage[utf8]{inputenc}
 \usepackage[dutch]{babel}
 \usepackage[absolute,overlay]{textpos}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{lipsum}
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage[fixlanguage]{babelbib}
+\usepackage[nottoc]{tocbibind}
+\usepackage{todonotes}
+\everymath={\displaystyle}
+\renewcommand{\figureautorefname}{Figuur}
+\renewcommand{\tableautorefname}{Tabel}
+\renewcommand{\partautorefname}{Deel}
+\renewcommand{\appendixautorefname}{Appendix}
+\renewcommand{\partautorefname}{Vergelijking}
+\renewcommand{\Itemautorefname}{punt}
+\renewcommand{\chapterautorefname}{Hoofdstuk}
+\renewcommand{\sectionautorefname}{Sectie}
+\renewcommand{\subsectionautorefname}{Sectie}
+\renewcommand{\subsubsectionautorefname}{Sectie}
+\renewcommand{\paragraphautorefname}{paragraaf}
+\renewcommand{\Hfootnoteautorefname}{noot}
+\renewcommand{\AMSautorefname}{Vergelijking}
+\renewcommand{\theoremautorefname}{Stelling}
+\renewcommand{\pageautorefname}{pagina}
+\interfootnotelinepenalty=10000
 % END Packages.
 
 % BEGIN UHasselt color definitions.
@@ -36,7 +64,7 @@
 % BEGIN Faculteit wetenschappen box.
 \begin{textblock}{7}(9.1,1.2)
     \textblockcolour{white}
-    {\color{uhasselttext} 2013 - 2014 \rule{0.2mm}{2.1mm} }{\color{uhasseltblue} Factulteit Wetenschappen}
+    {\color{uhasselttext} 2013 - 2014 \rule{0.2mm}{2.1mm} }{\color{uhasseltblue} Faculteit Wetenschappen}
 \end{textblock}
 % END Faculteit wetenschappen box.
 
@@ -50,12 +78,12 @@
     {\noindent\LARGE\bf\color{uhasseltblue} \Title}\newline
     
     \vspace{1.8cm}
-    {\small\color{uhasselttext}\noindent\it Proefschrit voorgelegd tot het behalen van de graad van bachelor in de wetenschappen, te verdedigen door:}\newline
+    {\small\color{uhasselttext}\noindent\it Proefschrift voorgelegd tot het behalen van de graad van bachelor in de wetenschappen, te verdedigen door:}\newline
     
     {\noindent\color{uhasselttext}\bf \Author}\newline
     
-    {\small\noindent\color{uhasselttext}\it Promotor: Prof. Dr. Jef}\newline
-    {\small\noindent\color{uhasselttext}\it Copromotoren: Dr. Jos, Dr. Jaque}
+    {\small\noindent\color{uhasselttext}\it Promotor: Prof. Dr. Philippe Bekaert}\newline
+    {\small\noindent\color{uhasselttext}\it Begeleiders: Patrik Goorts, Steven Maesen}
     \vspace{1.5cm}
 \end{textblock}
 % END Title box.
@@ -93,6 +121,31 @@
 % Change to default geometry.
 \restoregeometry
 
-% TODO FILL IN MEANINGFULL CONTENT.
+% Inhoudstafel
+\tableofcontents
 
+% Literatuurstudie
+\chapter{Literatuurstudie}
+\input{litstudy}
+
+% Opstelling
+
+
+% Uitvoering
+
+
+% Verwerking data
+
+
+% Appendices starten hier.
+\appendix
+
+% Rauwe data.
+\chapter{Verzamelde data}
+\input{data}
+
+
+\newpage
+\bibliographystyle{babplain-fl}
+\bibliography{refs}
 \end{document}
