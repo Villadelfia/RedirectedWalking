@@ -1,0 +1,98 @@
+\documentclass{article}
+
+% BEGIN Definitions.
+\makeatletter
+\title{Hier komt een fancy, ingewikkelde en hopelijk betekenisvolle titel.}  \let\Title\@title
+\author{Voornaam Achternaam}                        \let\Author\@author
+\date{January 2014}
+\makeatother
+% END Definitions.
+
+% BEGIN Packages.
+\usepackage{geometry}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage[dutch]{babel}
+\usepackage[absolute,overlay]{textpos}
+% END Packages.
+
+% BEGIN UHasselt color definitions.
+\definecolor{uhasseltred}{RGB}{101,52,58}
+\definecolor{uhasseltblue}{RGB}{27,47,97}
+\definecolor{uhasselttext}{RGB}{119,44,51}
+\definecolor{uhasseltlighttext}{RGB}{163,110,116}
+% END UHasselt color definitions.
+
+\begin{document}
+
+
+% BEGIN Cover page.
+
+% Setting the cover page geometry.
+\newgeometry{top=0pt,bottom=0pt,right=0pt,left=0pt}
+\thispagestyle{empty}
+
+% BEGIN Faculteit wetenschappen box.
+\begin{textblock}{7}(9.1,1.2)
+    \textblockcolour{white}
+    {\color{uhasselttext} 2013 - 2014 \rule{0.2mm}{2.1mm} }{\color{uhasseltblue} Factulteit Wetenschappen}
+\end{textblock}
+% END Faculteit wetenschappen box.
+
+% BEGIN Title box.
+\begin{textblock}{6.5}(2.4,6)
+    \textblockcolour{white}
+    \vspace*{1.5cm}
+    {\Large\noindent\color{uhasselttext} BACHELORPROEF}\newline
+    
+    \vspace{1.5cm}
+    {\noindent\LARGE\bf\color{uhasseltblue} \Title}\newline
+    
+    \vspace{1.8cm}
+    {\small\color{uhasselttext}\noindent\it Proefschrit voorgelegd tot het behalen van de graad van bachelor in de wetenschappen, te verdedigen door:}\newline
+    
+    {\noindent\color{uhasselttext}\bf \Author}\newline
+    
+    {\small\noindent\color{uhasselttext}\it Promotor: Prof. Dr. Jef}\newline
+    {\small\noindent\color{uhasselttext}\it Copromotoren: Dr. Jos, Dr. Jaque}
+    \vspace{1.5cm}
+\end{textblock}
+% END Title box.
+
+% BEGIN UHasselt logo box.
+\begin{textblock}{6.5}(9.1,14)
+    \begin{figure}[ht]
+        \centering
+        \includegraphics[width=1.5in]{images/logo_uhasselt}
+    \end{figure}
+\end{textblock}
+% END UHasselt logo box.
+
+\hspace*{4cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.28cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.015cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.015cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.52525cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.30cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.36cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+\hspace{0.015cm}
+{\color{uhasseltred}\rule{0.4mm}{\paperheight}}
+
+% END Cover page.
+
+% End the title page.
+\newpage
+% Change to default geometry.
+\restoregeometry
+
+% TODO FILL IN MEANINGFULL CONTENT.
+
+\end{document}
