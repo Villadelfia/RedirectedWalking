@@ -54,33 +54,28 @@
 % END UHasselt color definitions.
 
 \begin{document}
-
-
 % BEGIN Cover page.
-
 % Setting the cover page geometry.
 \newgeometry{top=0pt,bottom=0pt,right=0pt,left=0pt}
 \thispagestyle{empty}
-
 % BEGIN Faculteit wetenschappen box.
 \begin{textblock}{7}(9.1,1.2)
     \textblockcolour{white}
     {\color{uhasselttext} 2013 - 2014 \rule{0.2mm}{2.1mm} }{\color{uhasseltblue} Faculteit Wetenschappen}
 \end{textblock}
 % END Faculteit wetenschappen box.
-
 % BEGIN Title box.
 \begin{textblock}{6.5}(2.4,6)
     \textblockcolour{white}
     \vspace*{1.5cm}
     {\Large\noindent\color{uhasselttext} BACHELORPROEF}\newline
-    
     \vspace{1.5cm}
+
     {\noindent\LARGE\bf\color{uhasseltblue} \Title}\newline
-    
     \vspace{1.7cm}
-    {\small\color{uhasselttext}\noindent\it Proefschrift voorgelegd tot het behalen van de graad van bachelor in de wetenschappen, te verdedigen door:}\newline
     
+    {\small\color{uhasselttext}\noindent\it Proefschrift voorgelegd tot het behalen van de graad van bachelor in de wetenschappen, te verdedigen door:}\newline
+
     {\noindent\color{uhasselttext}\bf \Author}\newline
     
     {\small\noindent\color{uhasselttext}\it Promotor: Prof. Dr. Philippe Bekaert}\newline
@@ -88,7 +83,6 @@
     \vspace{1.5cm}
 \end{textblock}
 % END Title box.
-
 % BEGIN UHasselt logo box.
 \begin{textblock}{6.5}(9.1,14)
     \begin{figure}[ht]
@@ -97,7 +91,6 @@
     \end{figure}
 \end{textblock}
 % END UHasselt logo box.
-
 \hspace*{4cm}
 {\color{uhasseltred}\rule{0.4mm}{\paperheight}}
 \hspace{0.28cm}
@@ -114,24 +107,24 @@
 {\color{uhasseltred}\rule{0.4mm}{\paperheight}}
 \hspace{0.015cm}
 {\color{uhasseltred}\rule{0.4mm}{\paperheight}}
-
 % END Cover page.
-
 % End the title page.
 \newpage
 % Change to default geometry.
 \restoregeometry
 
+
 % Inhoudstafel
 \tableofcontents
+
 
 % Literatuurstudie
 \chapter{Literatuurstudie}
 \input{litstudy}
 
 % Verder onderzoek
-\chapter{Verder onderzoek}
-\input{furtherresearch}
+\chapter{Mijn onderzoek}
+\input{myresearch}
 
 % Virtuele omgeving
 \chapter{Virtuele omgeving}
@@ -141,6 +134,11 @@
 \chapter{Experiment}
 \input{experiment}
 
+% Besluit
+\chapter{Besluit en verder onderzoek}
+\input{conclusion}
+
+
 % Appendices starten hier.
 \appendix
 
@@ -149,8 +147,8 @@
 \input{meetings}
 
 % Rauwe data.
-%\chapter{Verzamelde data}
-%\input{data}
+\chapter{Verzamelde data}
+\input{data}
 
 
 \newpage

@@ -19,8 +19,12 @@ staat zoals ge\"illustreerd in figuur \ref{fig:verandering}, na het verlaten van
 het kantoor staat de proefpersoon weer op de exacte locatie waar hij begonnen is.
 Wegens de beweging van de gang wordt er hier de illusie gecre\"eerd dat men
 verder in de gang staat dan eerst. De proefpersoon kan dan de deur van het 
-kantoor sluiten om de volgende deur te openen. Dit geheel word drie keer 
+kantoor sluiten om de volgende deur te openen. Dit geheel wordt drie keer 
 herhaald.
+
+De beweging van de gang wordt teweeg gebracht door een transformatie in de
+positie te laten gebeuren na het triggeren van de knop, wegens de gekozen hoek is
+de deur hier nooit voor in beeld.
 
 \begin{figure}[p]
     \centering
@@ -82,9 +86,12 @@ omdat de HMD een kleine hoeveelheid ``yaw drift'' heeft, en dit zou kunnen zorge
 voor botsingen met de fysieke omgeving.
 
 Ik heb dit systeem ook gebruikt om de trillingen in de gerapporteerde yaw van het
-trackingsysteem te verminderde, door een gewogen gemiddelde van twee metingen te
+trackingsysteem te verminderde, door een gemiddelde van twee metingen te
 gebruiken. Daar de ``framerate'' van het systeem voldoende is, heeft dit bijna 
 geen effect op de latency van de bewegingen.
+
+In de praktijk werkt dit door te werken met het gemiddelde van de vorige meting
+en de nieuwe meting in plaats van met de rauwe meting te werken.
 
 Aan de serverkant heb ik gebruik gemaakt van de OptiTrack:Motive software om de
 VRPN data te broadcasten.
