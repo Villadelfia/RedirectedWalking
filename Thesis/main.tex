@@ -2,7 +2,7 @@
 
 % BEGIN Definitions.
 \makeatletter
-\title{Invloed van ``change blindness'' op de effectiviteit van immersie in virtuele omgevingen.}  \let\Title\@title
+\title{Effect van ``change blindness'' op immersie in virtuele omgevingen.}  \let\Title\@title
 \author{Randy Thiemann}                        \let\Author\@author
 \date{Mei 2014}
 \makeatother
@@ -16,6 +16,7 @@
 \usepackage{amssymb}
 \usepackage{textcomp}
 \usepackage{graphicx}
+\graphicspath{ {./images/} }
 \usepackage{siunitx}
 \usepackage{parskip}
 \usepackage{hyperref}
@@ -92,7 +93,7 @@
 \begin{textblock}{6.5}(9.1,14)
     \begin{figure}[ht]
         \centering
-        \includegraphics[width=1.5in]{images/logo_uhasselt}
+        \includegraphics[width=1.5in]{logo_uhasselt}
     \end{figure}
 \end{textblock}
 % END UHasselt logo box.
@@ -128,21 +129,28 @@
 \chapter{Literatuurstudie}
 \input{litstudy}
 
-% Opstelling
+% Verder onderzoek
+\chapter{Verder onderzoek}
+\input{furtherresearch}
 
+% Virtuele omgeving
+\chapter{Virtuele omgeving}
+\input{virtualenv}
 
-% Uitvoering
-
-
-% Verwerking data
-
+% Experiment
+\chapter{Experiment}
+\input{experiment}
 
 % Appendices starten hier.
 \appendix
 
+% Verslagen meetings.
+\chapter{Meetings}
+\input{meetings}
+
 % Rauwe data.
-\chapter{Verzamelde data}
-\input{data}
+%\chapter{Verzamelde data}
+%\input{data}
 
 
 \newpage
