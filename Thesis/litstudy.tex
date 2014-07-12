@@ -3,56 +3,64 @@
 \emph{Redirected walking} is een techniek waarbij een proefpersoon in een 
 virtuele omgeving weergegeven in een head-mounted display kan rondwandelen door 
 middel van het vervormen van de route die deze proefpersoon in een fysieke 
-omgeving wandelt.
-
-Het doel is, door de 1:1 relatie van fysieke beweging en virtuele beweging te
-ontkoppelen, rondwandelen in grotere tot zelfs arbitrair grote virtuele ruimtes
-mogelijk te maken.
-
-Om dit te effect te bekomen zijn er 2 brede categorie\"en van technieken, ik zal
-deze twee categorie\"en beknopt toelichten samen met enkele concrete voorbeelden.
-
-Naast de technieken voor immersie door middel van het zicht zijn er ook 
-technieken om de andere zintuigen te betrekken, ik beschrijf deze ook even 
-beknopt.
-
-Vervolgens zal ik enkele inherente zwaktes in redirected walking toelichten. Ik 
-behandel dan even de hardware beschikbaar voor dit onderzoek.
+omgeving wandelt. Het doel is, door de 1:1 relatie van fysieke beweging en 
+virtuele beweging te ontkoppelen, rondwandelen in grotere tot zelfs arbitrair 
+grote virtuele ruimtes mogelijk te maken. Ik zal diverse technieken bespreken die
+gebruikt worden om deze ontkoppeling teweeg te brengen. Naast de
+redirectietechnieken zijn er ook technieken die de immersie verbeteren door
+andere zintuigen te betrekken bij het proces.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Redirectietechnieken (RDTs)}
 RDTs zijn technieken waar de fysieke bewegingen van een proefpersoon ontkoppeld
-worden van de resulterende virtuele bewegingen.
-
-Bij deze technieken is het belangrijk om de vervormingen onmerkbaar te houden
-voor de proefpersoon\cite{kohn01}, maar ook om ze consistent te houden om 
-simulatieziekte te vermijden\cite{kolasinski95}.
-
-Ik beschrijf hier kort enkele van deze technieken samen met onderzoeken die er 
-over gevoerd zijn.
+worden van de resulterende virtuele bewegingen. Dit kan bijvoorbeeld gebeuren 
+door de snelheid van de proefpersoon in de virtuele omgeving te versnellen of te
+vertragen ten opzichte van de snelheid in de fysieke omgeving, of door de
+rotaties te vertragen of te versnellen zodat de proefpersoon het tracking gebied
+niet verlaat. Ik beschrijf hier kort enkele van deze technieken samen met 
+onderzoeken die er over gevoerd zijn.
 
 
 \subsection{Rotationele vervorming}
+Bij rotationele vervorming worden de rotaties van de proefpersoon in de 
+virtuele omgeving vertraagd of versneld ten opzichte van de rotaties in de
+fysieke omgeving, een voorbeeld hiervan kan men zien in Figuur 
+\ref{fig:kohn01-movement}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{kohn01-movement}
+    \caption{Vergelijking van de beweging van de proefpersoon in de virtuele
+    omgeving (blauw) en de overeenkomstige beweging in de fysieke omgeving 
+    (rood).\cite{kohn01}}
+    \label{fig:kohn01-movement}
+\end{figure}
+
+Deze techniek is al in diverse papers onderzocht:
+
 In een onderzoek gevoerd door Razzaque et. al., 2001 \cite{kohn01} werden 
-proefpersonen gevraagd om een virtuele brandoefening uit te voeren.
+proefpersonen gevraagd om een virtuele brandoefening uit te voeren. In de 
+opstelling voor dit onderzoek waren er in het fysieke labo twee knoppen geplaatst
+op dezelfde afstand als in de virtuele omgeving. In de virtuele omgeving waren er
+echter 4 knoppen met telkens een hoek van 90 graden er tussen, deze opstelling is
+in bovenaanzicht getoond in Figuur \ref{fig:kohn01-movement}. In dit onderzoek
+werd op enkele verschillende manieren rotationele vervorming ingevoegd:
 
-In de opstelling voor dit onderzoek waren er in het fysieke labo twee knoppen
-geplaatst op dezelfde afstand als in de virtuele omgeving. In de virtuele
-omgeving waren er echter 4 knoppen met telkens een hoek van 90 graden er tussen.
+Als de proefpersoon stilstaat werd er een kleine hoeveelheid ``drift'' 
+toegevoegd, de camera in de virtuele omgeving draaide automatisch zeer traag in 
+de omgekeerde richting van waar men de proefpersoon in de fysieke omgeving heen 
+wilde naar laten kijken. Het bleek dat de proefpersoon hierdoor automatisch in
+die richting ging draaien om het beeld stil te houden. De rotaties van de
+proefpersoon werden ook overdreven, of juist gedempt, om de proefpersoon in de
+fysieke omgeving in de juiste richting te laten wandelen.
 
-In dit onderzoek heeft men ondervonden dat er 3 manieren zijn om rotationele
-vervorming in te voegen:
+Naast deze vervormingen indien de testpersoon in stilstand was, was het ook
+mogelijk om een schijnbaar rechte lijn in de virtuele omgeving overeen te laten
+komen met een curve. Dit effect werd bekomen door het pad in de virtuele omgeving
+een bepaalde hoeveelheid te buigen, proportioneel met de lineaire snelheid van
+de proefpersoon in de fysieke omgeving.
 
-\begin{enumerate}
-    \item Als de proefpersoon stil staat is het mogelijk om een kleine 
-        hoeveelheid constante rotatie in te voegen, de proefpersoon zal dan 
-        automatisch meedraaien.
-    \item Indien de proefpersoon zelf ronddraait kan deze rotatie overdreven 
-        worden.
-    \item Ten laatste is het mogelijk om het pad in de virtuele omgeving een
-        bepaalde hoeveelheid te buigen die proportioneel is met de lineaire
-        snelheid van de proefpersoon in de fysieke omgeving.
-\end{enumerate}
+% CONTINUE
 
 Deze gegevens werden dan gebruikt om de proefpersoon in de richting van de 
 volgende knop te sturen zodat de proefpersoon voor een fysieke knop stond als dit 
