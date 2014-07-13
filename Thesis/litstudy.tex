@@ -60,54 +60,44 @@ komen met een curve. Dit effect werd bekomen door het pad in de virtuele omgevin
 een bepaalde hoeveelheid te buigen, proportioneel met de lineaire snelheid van
 de proefpersoon in de fysieke omgeving.
 
-\todo{continue here}
+Een combinatie van deze methodes werd gebruikt om er voor te zorgen dat als de
+proefpersoon in de fysieke omgeving voor een knop stond, dit in de virtuele
+omgeving ook het geval was. Helaas was het voor deze implementatie nodig dat er
+een voorberekend pad door de virtuele omgeving bestond, en dat de proefpersoon
+er zo weinig mogelijk van afweek. Later werden er technieken voorgesteld om deze
+vereisten te verzwakken.
 
-Deze gegevens werden dan gebruikt om de proefpersoon in de richting van de 
-volgende knop te sturen zodat de proefpersoon voor een fysieke knop stond als dit 
-ook het geval was in de virtuele omgeving.
-
-Dit onderzoek vereist een voorberekend pad en een minimale deviatie van dit pad 
-door de proefpersoon voor een optimale ervaring. In Engel et. al., 2008 
-\cite{engel08} wordt een techniek voorgesteld om deze rotationele vervorming 
-dynamisch te bepalen.
-
-Dit werd gedaan door het dynamische-rotatie probleem te reduceren tot een 
-optimisatie probleem, welke in de AI gemeenschap reeds bekend zijn.
-
-Dit algoritme maakte het mogelijk om optimale rotationele vervormingen te 
-berekenen maar vereist in ieder geval een gedeeltelijke kennis over het te volgen
-virtuele pad.
+In Engel et. al., 2008 \cite{engel08} wordt een techniek voorgesteld om deze 
+rotationele vervorming dynamisch te bepalen. Dit werd gedaan door het 
+dynamische-rotatie probleem te reduceren tot een optimisatie probleem, welke in 
+de AI gemeenschap reeds bekend zijn. Dit algoritme maakte het mogelijk om 
+optimale rotationele vervormingen te berekenen maar vereist in ieder geval een 
+gedeeltelijke kennis over het te volgen virtuele pad, en vereist dat het pad een
+bepaalde hoeveelheid bochten bevat.
 
 In een ander onderzoek in Neth et. al., 2012 \cite{neth12} werd verder 
 onderzocht wat de precieze relatie tussen bewegingssnelheid en maximaal 
-acceptabele rotationele vervorming is.
-
-Uit dit onderzoek bleek dat tragere snelheden grotere vervormingen toelaten, maar
-dat deze relatie niet lineair is.
-
+acceptabele rotationele vervorming is. Uit dit onderzoek bleek dat tragere 
+snelheden grotere vervormingen toelaten, maar dat deze relatie niet lineair is.
 Aangezien mensen over het algemeen trager wandelen in virtuele omgevingen
 \cite{mohler07}, kan men dit toepassen in redirected walking.
 
-In een tweede experiment \cite{neth12} werd onderzocht of deze bevindingen
-effectief konden gebruikt worden dynamische schalering van vervorming toe te
-passen in een rijke virtuele omgeving. Er werd hier onderzocht of er een
-significant verschil is tussen de effectiviteit van statische rotationele
-vervorming versus dynamische rotationele vervorming.
-
-Naast de technieken van Razzaque et. al., 2001 \cite{kohn01} om rotationele
-vervorming in te voegen met een constant, een statisch en een dynamisch 
-component, werd er ook gebruik gemaakt van versterking van de effecten nabij de 
-randen van de fysieke omgeving, om het verlaten van het tracking gebied te 
-vermijden.
-
-Er werd gemeten wat de mediaanafstand is die een proefpersoon kan wandelen in 
-een grote virtuele omgeving voor de proefpersoon moet geforceerd 
-geherori\"enteeerd worden richting het centrum van de fysieke omgeving om het 
-verlaten van het tracking gebied te voorkomen.
-
-Uit dit experiment is gebleken dat er een positief significant verschil is tussen
-de mediaan gewandelde afstand bij dynamische vervorming versus statische
-vervorming zonder een significante verhoging in simulatorziekte.
+In een tweede experiment uit hetzelfde onderzoek \cite{neth12} werd onderzocht 
+of deze bevindingen effectief konden gebruikt worden dynamische schalering van 
+vervorming toe te passen in een rijke virtuele omgeving. Er werd hier onderzocht 
+of er een significant verschil is tussen de merkbaarheid van statische 
+rotationele vervorming (als de proefpersoon stil staat) versus dynamische 
+rotationele vervorming (als de proefpersoon beweegt). Naast de technieken van 
+Razzaque et. al., 2001 \cite{kohn01} om rotationele vervorming in te voegen met 
+een constant, een statisch en een dynamisch component, werd er ook gebruik 
+gemaakt van versterking van de effecten nabij de randen van de fysieke omgeving, 
+om het verlaten van het tracking gebied te vermijden. Er werd gemeten wat de 
+mediaanafstand is die een proefpersoon kan wandelen in een grote virtuele 
+omgeving voor de proefpersoon moet geforceerd geherori\"enteeerd worden richting
+het centrum van de fysieke omgeving om het verlaten van het tracking gebied te 
+voorkomen. Uit dit experiment is gebleken dat er een positief significant 
+verschil is tussen de mediaan gewandelde afstand bij dynamische vervorming 
+versus statische vervorming zonder een significante verhoging in simulatorziekte.
 
 Uit al deze onderzoeken blijkt dat er een trade-off is tussen een virtuele 
 omgeving met een ongekend pad\cite{neth12} versus een betere immersie wegens 
@@ -115,95 +105,151 @@ minder onderbrekingen\cite{engel08,kohn01}.
 
 Alle vorige studies behandelden rotationele vervorming in beweging, dus over 
 curves. Het is echter ook mogelijk om rotationele vervorming in stilstand te
-hebben.
-
-In \cite{steinicke09} werd bepaald dat in dit specifieke geval compressies tot
-77\% acceptabel zijn voor de proefpersoon het merkt.
-
-Rotationele vervorming vormt de basis van redirected walking, gegeven een
-voldoende grote ruimte kan deze techniek toegepast worden om elke virtuele
-omgeving te doorlopen.
+hebben. In Steinicke et. al., 2009 \cite{steinicke09} werd bepaald dat in dit 
+specifieke geval compressies tot 77\% acceptabel zijn voor de proefpersoon het 
+merkt.
 
 
 \subsection{Translationele vervorming}
 Naast rotationele vervorming is het ook mogelijk om de lineaire snelheid van een
 proefpersoon te vervormen daar onderzoek heeft aangetoond dat proefpersonen in 
 virtuele omgevingen afstand \cite{loomis03}, snelheid \cite{banton05} en 
-afgelegde afstand \cite{frenz07} onderschatten.
+afgelegde afstand \cite{frenz07} onderschatten. In Steinicke et. al., 2009 \cite{steinicke09} 
+werd er een experiment uitgevoerd om onder andere te bepalen wat de maximaal 
+acceptabele translationele vervorming is voor een gegeven snelheid. Er werd 
+bepaald dat de vervorming merkbaar is bij een versnelling tussen 20\% en 60\% 
+met een ideale waarde van ongeveer 20\%.
 
-In Steinicke et. al., 2009 \cite{steinicke09} werd er een experiment uitgevoerd 
-om onder andere te bepalen wat de maximaal acceptabele translationele vervorming 
-is voor een gegeven snelheid.
-
-Er werd bepaald dat de vervorming merkbaar is bij een versnelling tussen 20\% en
-60\% met een ideale waarde van ongeveer 20\%.
-
-Translationele vervorming vormt samen met rotationele vervorming een ideale basis 
-om realistische redirected walking toe te passen, maar toch de benodigde fysieke 
-ruimte tot een minimum te houden.
+Rotationele vervorming en translationele vervorming vormen de basis van
+redirected walking, en zijn ook de twee technieken die gebruik maken van
+ontkoppeling van het fysieke en het virtuele pad van de proefpersoon.
 
 
 \subsection{Change blindness}
-\todo{MEER}
-Een alternatieve methode, zonder ontkoppeling van de 1:1 relatie tussen fysieke 
-en virtuele locatie is het gebruik maken van change blindness.
+Change blindness slaat op de manier waarop mensen onder bepaalde omstandigheden
+verrassend grote veranderingen in een omgeving niet merken. In een paper van
+Simons et. al., 2005 \cite{simons05} wordt er een breed overzicht gegeven van de
+diverse experimenten die zijn uitgevoerd rond dit fenomeen. Zo merken veel mensen
+bijvoorbeeld helemaal niet als een persoon in het midden van een interactie door
+een totaal andere persoon wordt vervangen\cite{simons98}, of wordt het verschil
+tussen twee foto's die om de beurt worden getoond pas na een zeer lange tijd
+opgemerkt\cite{rensink97}.
+
+Omdat dit zo een krachtig fenomeen is, wordt het ook toegepast in redirected 
+walking. Waar de vorige technieken het fysieke en het virtuele pad van de 
+proefpersoon ontknoppelden probeert deze techniek de proefpersoon te misleiden, 
+en er voor te zorgen dat hij in de tracking ruimte blijft door de layout van de 
+virtuele omgeving strategisch aan te passen, bijvoorbeeld door een deur van
+plaats te laten wisselen zoals in Figuur \ref{fig:suma1}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{suma1}
+    \caption{Voorbeeld van een verandering in een virtuele omgeving.\cite{suma11}}
+    \label{fig:suma1}
+\end{figure}
 
 In Suma et. al., 2011 \cite{suma11} werd er getest of veranderingen in de 
-virtuele omgeving voor de proefpersonen merkbaar waren. In een virtuele omgeving 
-werd de locatie van de deur in een kamer veranderd zodra de proefpersoon weg 
-keek.
+virtuele omgeving voor de proefpersonen merkbaar waren. De proefpersoon werd
+gevraagd om in een virtueel kantoor in elke kamer een beeldscherm uit te zetten
+en vervolgens de kamer verlaten. Dit proces werd dan herhaald voor 16 kamers.
+Nadat het beeldscherm werd uitgezet veranderde de deur van positie zodat de gang
+in een hoek van 90 graden verder ging ten opzichte van hoe de proefpersoon de
+kamer binnenkwam. Dit hele proces is zichtbaar in Figuur \ref{fig:suma2}.
 
-Uit dit experiment is gebleken dat, in zulke omstandigheden, veranderingen in de
-virtuele omgeving voor zowel ervaren als na\"ieve proefpersonen onmerkbaar zijn.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{suma2}
+    \caption{Verandering van de positie van de deur in het onderzoek van Suma et. 
+    al., 2011 \cite{suma11}.}
+    \label{fig:suma2}
+\end{figure}
+
+Door de veranderingen van de fysieke omgeving op deze manier te laten gebeuren
+werd de proefpersoon geforceerd cirkels rond de tracking area te wandelen, in
+Figuur \ref{fig:suma3} is een illustratie van het pad door een kamer te zien.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{suma3}
+    \caption{Voorbeeld van een verandering in een virtuele omgeving.\cite{suma11}}
+    \label{fig:suma3}
+\end{figure}
+
+Uit de afgenomen vragenlijst is toen gemerkt dat deze verandering voor bijna 
+iedereen compleet onmerkbaar was, en werd er zelfs maar in kleine mate ervaren
+dat men in cirkels was aan het wandelen.
+
+
+\subsection{Afleiders}
+Een laatste techniek die ik zal bespreken is het toevoegen van ``afleiders'',
+dynamisch bewegende voorwerpen of personen die als doel hebben de proefpersoon
+uit eigen wil zijn pad te laten afbuigen. Afleiders kunnen ook gebruikt worden
+om de ontkoppelingen van het virtuele en het fysieke pad minder te laten 
+opvallen.
+
+In een onderzoek van Neth et. al., 2012 \cite{neth12} werd er bijvoorbeeld 
+gebruik gemaakt van andere virtuele avatars zoals in Figuur \ref{fig:avatars}.
+Er werd gebruik gemaakt van avatars die recht voor de proefpersoon gingen
+stilstaan om deze af te dwingen te vertragen indien hij te snel ging om het pad
+effectief af te buigen. Er werd ook gebruik gemaakt van avatars die op koers
+wandelden voor een botsing om de proefpersoon te forceren af te buigen.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{avatars}
+    \caption{Voorbeeld van avatars in een virtuele omgeving, met als doel de
+    proefpersoon te laten vertragen of zijn pad af te buigen.\cite{neth12}}
+    \label{fig:avatars}
+\end{figure}
+
+In Peck et. al., 2009 \cite{peck09} werd er op een andere manier gebruik gemaakt 
+van afleiders. Er werd gevraagd aan de proefpersoon om een vlinder te volgen om
+hem de illusie te geven dat hij \mbox{360\textdegree} heeft gedraaid terwijl hij 
+eigenlijk maar 180\textdegree{} heeft gedraaid. Hieruit bleek dat proefpersonen 
+minder het gevoel hadden dat de wereld versneld draaide met een afleiding dan 
+bij andere technieken.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Reori\"entatietechnieken (ROTs)}
-ROTs zijn technieken om te voorkomen dat de proefpersoon het fysiek trackbare 
-gebied verlaat.
-
-In tegenstelling tot RDTs zijn deze technieken niet noodzakelijk onmerkbaar, ik
-beschrijf er hier enkele.
+Hoewel redirectietechnieken bedoeld zijn om een proefpersoon binnen een tracking
+area te laten wandelen, kan het soms gebeuren dat een botsing met de rand van de
+tracking area niet meer te vermeiden is. Als dit het geval is wordt er gebruik
+gemaakt van ``reori\"entatietechnieken''. Dit zijn directe commando's aan de
+proefpersoon om van koers te veranderen, en vallen daarom ook behoorlijk op. Ik
+beschrijf hier de meest voorkomende ROTs.
 
 
 \subsection{Verbale commandos}
+Bij verbale commandos wordt er een geluidssignaal gegeven (meestal een gesproken
+signaal) waarin de proefpersoon wordt gevraagd om te draaien.
+
 In het onderzoek van Razzaque et. al., 2001 \cite{kohn01} werd, indien de
 proefpersoon dreigde het tracking gebied te verlaten, de proefpersoon met verbale
 commando's gevraagd stil te staan en heen en weer te kijken om de proefpersoon in
 de fysieke omgeving terug in de juiste richting te laten kijken.
 
 Er werd in een andere studie van Peck et. al., 2009 \cite{peck09} echter bevonden 
-dat verbale commando's niet de beste optie zijn voor redirectietechnieken, en dat
-afleidingen betere resultaten geven.
+dat verbale commando's niet de beste optie zijn voor redirectietechnieken, omdat
+deze makkelijk genegeerd kunnen worden.
 
 
 \subsection{Visuele commandos}
+Bij visuele commandos wordt er een signaal op de display weergegeven om de 
+proefpersoon te vragen om te draaien.
+
 In het onderzoek van Neth et. al., 2012 \cite{neth12} werd onder andere gebruik 
 gemaakt van een stopteken. Als dit werd getoond werd de hele virtuele wereld stil 
 gelegd. Er werd op voorhand aan de proefpersoon gevraagd rond te draaien tot het 
-stopteken verdwijnt indien het getoond werd.
-
-Hoewel dit een zeer intrusieve methode is, is ze zeer effectief om het verlaten
-van het tracking gebied te voorkomen.
-
-
-\subsection{Afleiders}
-Bovenstaande ROTs zijn allemaal erg intrusief, daarom is er een derde categorie
-van ROTs die tracht zo onopvallend mogelijk te zijn.
-
-Dit is de categorie van de afleidingen, zoals andere ``personen'' in de virtuele
-omgeving\cite{neth12}, om de proefpersoon subtiel in de juiste richting te 
-leiden.
-
-In Peck et. al., 2009 \cite{peck09} wordt er onder andere gebruik gemaakt van een 
-te volgen object (een vlinder) om de proefpersoon de illusie te geven dat hij 
-\mbox{360\textdegree} heeft gedraaid terwijl hij eigenlijk maar 180\textdegree{}
-heeft gedraaid. Hieruit bleek dat proefpersonen minder het gevoel hadden dat de
-wereld versneld draaide met een afleiding dan bij andere technieken.
+stopteken verdwijnt indien het getoond werd. Hoewel dit een zeer intrusieve 
+methode is, is ze zeer effectief om het verlaten van het tracking gebied te 
+voorkomen daar ze niet te negeren is.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Andere zintuigen}
+\section{Immersie}
+\todo{realisme bespreken + het belang er van}
 Hoewel visie voor redirected walking het belangrijkst is, omdat bij conflicten
 tussen het proprioceptieve en het vestibulaire systeem en visie, visie vaak dit
 conflict wint\cite{berthoz02,dichgans78,bruder08}, zijn de andere zintuigen toch
