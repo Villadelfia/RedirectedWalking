@@ -249,64 +249,73 @@ voorkomen daar ze niet te negeren is.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Immersie}
-\todo{realisme bespreken + het belang er van}
 Hoewel visie voor redirected walking het belangrijkst is, omdat bij conflicten
-tussen het proprioceptieve en het vestibulaire systeem en visie, visie vaak dit
+tussen het proprioceptieve\footnote{Het zintuig dat de relatieve afstand tussen
+lichaamsdelen waarneemt.} en het vestibulaire\footnote{Het zintuig 
+verantwoordelijk voor ons evenwichtsgevoel.} systeem en visie, visie vaak dit
 conflict wint\cite{berthoz02,dichgans78,bruder08}, zijn de andere zintuigen toch
-belangrijk om immersie te verkrijgen. 
-
-Als men in een virtuele omgevingen geluid realistisch kan positioneel
-reproduceren helpt dit bijvoorbeeld de immersie enorm\cite{lackner77}, maar zelf
-het maskeren van geluid van in de fysieke wereld met bijvoorbeeld ruis kan
-helpen\cite{usoh99}.
+belangrijk om immersie te verkrijgen. Als men in een virtuele omgevingen geluid 
+realistisch kan positioneel reproduceren helpt dit bijvoorbeeld de immersie 
+enorm\cite{lackner77}, maar zelfs het maskeren van geluid van in de fysieke 
+wereld met bijvoorbeeld ruis kan helpen\cite{usoh99}.
 
 In Engel et. al., 2008\cite{engel08} wordt ook opgemerkt dat de hoeveelheid 
 omgevingslicht en omgevingsgeluid dat binnensijpelt een merkbare negatieve 
-invloed heeft op de effectiviteit van redirectietechnieken.
+invloed heeft op de effectiviteit van redirectietechnieken. Naast audio is het 
+ook mogelijk om de immersie te verhogen met proxy-objecten in de fysieke 
+omgeving die overeen komen met objecten in de virtuele omgeving\cite{steinicke09}
+zoals te zien is in Figuur \ref{fig:proxy-object}.
 
-Naast audio is het ook mogelijk om de immersie te verhogen met proxy-objecten in
-de fysieke omgeving die overeen komen met objecten in de virtuele 
-omgeving\cite{steinicke09}.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{proxy-object}
+    \caption{Voorbeeld van een proxy-object en het overeenkomstige beeld dat de
+    proefpersoon ziet.\cite{steinicke09}}
+    \label{fig:proxy-object}
+\end{figure}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Inherente zwaktes}
-Hoewel redirected een realistische en immersieve omgeving kan cre\"eren zijn er
-toch enkele inherente zwaktes waar op zich niet omheen kan gewerkt worden.
-
-Zo is het bijvoorbeeld onmogelijk om arbitraire fysieke collisie overeen te laten
-komen met collisie in de virtuele omgeving tenzij het labo expliciet voor die
-virtuele omgeving is gebouwd.
-
-Een ander voorbeeld is dat het onmogelijk is om heuvels of ander ruw terrein te
-hebben in de virtuele omgeving zonder immersie te breken.
-
-Desondanks deze behoorlijke beperkingen heeft redirected walking toch veel
-potenti\"ele toepassingen zoals virtuele rondleidingen.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Positionele tracking \& Head-mounted diplays (HMDs)}
-Naast het software aspect van redirected walking is er ook het hardware aspect
-van het positioneel tracken en het head-mounted display.
-
-Er zijn twee grote categorie\"en van head trackers. Inwaartse tracking, waar de
-proefpersoon door \'e\'en of meer camera's in de omgeving wordt getrackt. En
-uitwaartse tracking, waar een camera aan de proefpersoon hangt en deze de
-omgeving trackt.
-
-In het algemeen wordt bij redirected walking gebruik gemaakt van inwaartse 
-tracking\cite{bruder08,engel08,steinicke09,kohn01,neth12,ward92}. Er zijn ook 
-commerci\"ele uitwaartse tracking systemen die gebruikt worden in redirected
-walking onderzoeken\cite{peck09,suma11}. Verder is er nog actief onderzoek naar
-betere uitwaartse tracking systemen\cite{maesen13}.
-
-Voor HMDs is het ideaal om een zo hoog mogelijke field of view te hebben, dit
-lijkt geen groot effect te hebben op de prevalentie van 
-simulatieziekte\cite{arthur00} maar verhoogt de performantie en immersie
-drastisch\cite{arthur00}.
+Voor de effectieve weergave van de virtuele omgeving maakt men meestal gebruik 
+van een head mounted display, of een HMD. Voor HMDs is het ideaal om een zo hoog 
+mogelijke field of view te hebben, dit lijkt geen groot effect te hebben op de 
+prevalentie van simulatieziekte\cite{arthur00} maar verhoogt de performantie en 
+immersie drastisch\cite{arthur00}.
 
 Traditioneel waren HMDs met hoge field of view zeer duur en niet beschikbaar voor
 consumenten, maar tegenwoordig zijn er enkele betaalbare HMDs beschikbaar met een
 redelijk hoge field of view, zoals de Oculus Rift DK1 (110\textdegree{} 
 diagonaal).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{or-dk1}
+    \caption{De Oculus Rift Developer Kit 1}
+    \label{fig:or-dk1}
+\end{figure}
+
+Ten laatste is het voor redirected walking ook belangrijk dat de positie van
+de proefpersoon in de fysieke omgeving geweten is tot in grote precisie. Er zijn
+hier echter een grote hoeveelheid commerci\"ele systemen voor beschikbaar zoals
+het OptiTrack systeem. Ik ga hier niet verder op in.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Samenvatting}
+De technieken voor redirected walking vari\"eren van technieken die een
+ontkoppeling van de virtuele en fysieke omgeving verwezenlijken om een arbitrair
+pad in de virtuele omgeving in de fysieke omgeving te laten passen, tot
+technieken zoals change blindness die gebruik maken van eigenaardigheden van het
+menselijk brein om de virtuele omgeving aan te passen zodat deze in de fysieke
+omgeving past.
+
+Hoewel redirected walking een realistische en immersieve omgeving kan cre\"eren 
+zijn er toch enkele inherente zwaktes waar op zich niet omheen kan gewerkt 
+worden. Zo is het bijvoorbeeld onmogelijk om arbitraire fysieke collisie overeen 
+te laten komen met collisie in de virtuele omgeving tenzij het labo expliciet 
+voor die virtuele omgeving is gebouwd. Het is ook niet mogelijk om de textuur van
+de vloer in de fysieke omgeving overeen te laten komen met deze in de virtuele
+omgeving als deze verandert van kamer tot kamer.
+
+Ondanks deze relatief kleine beperkingen is redirected walking toch zeer
+geschikt voor gebruik in toepassingen zoals virtuele rondleidingen, of het
+doorlopen van een virtuele impressie van een huis voor het effectief gebouwd
+zal worden.
