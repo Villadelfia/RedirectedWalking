@@ -258,7 +258,7 @@ omdat de HMD een kleine hoeveelheid ``yaw drift'' heeft, en dit zou kunnen zorge
 voor botsingen met de fysieke omgeving.
 
 Ik heb dit systeem ook gebruikt om de trillingen in de gerapporteerde yaw van het
-trackingsysteem te verminderde, door een gemiddelde van twee metingen te
+trackingsysteem te verminderen door een gemiddelde van twee metingen te 
 gebruiken. Daar de \emph{framerate} van het systeem voldoende is, heeft dit bijna 
 geen effect op de latency van de bewegingen (effectief een latency van 16 ms bij
 een framerate van 60 Hz). In de praktijk werkt dit door te werken met het 
@@ -300,6 +300,11 @@ private float normAngle(float a) {
     return a;
 }
 \end{minted}
+
+Ik heb hier uitdrukkelijk geen gebruik gemaakt van een Kalman filter wegens de
+precisie van het OptiTrack systeem tot op minder dan een millimeter. Hierdoor
+is mijn techniek ruim voldoende om de zeer kleine hoeveelheid jitter op te
+vangen.
 
 Aan de serverkant heb ik gebruik gemaakt van de OptiTrack:Motive software om de
 VRPN data te broadcasten.
